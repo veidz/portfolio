@@ -59,4 +59,11 @@ describe('About', () => {
       screen.getByText('Design Systems e componentização'),
     ).toBeInTheDocument()
   })
+
+  it('should have section element with id', () => {
+    const { container } = render(<About {...defaultProps} />)
+
+    const section = container.querySelector('section#about')
+    expect(section).toBeInTheDocument()
+  })
 })
