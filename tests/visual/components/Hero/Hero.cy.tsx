@@ -22,7 +22,7 @@ describe('Hero Visual Tests', () => {
       .find('span')
       .eq(1)
       .should('contain', 'Veidz')
-      .should('have.class', 'font-[family-name:var(--font-pacifico)]')
+      .should('have.class', 'font-family-pacifico')
   })
 
   it('should apply brand color to Veidz', () => {

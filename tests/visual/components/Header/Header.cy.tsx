@@ -70,10 +70,7 @@ describe('Header Visual Tests', () => {
   })
 
   it('should render logo with Pacifico font', () => {
-    cy.contains('Veidz').should(
-      'have.class',
-      'font-[family-name:var(--font-pacifico)]',
-    )
+    cy.contains('Veidz').should('have.class', 'font-family-pacifico')
   })
 
   it('should render logo with correct text size', () => {
