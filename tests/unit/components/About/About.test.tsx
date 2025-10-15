@@ -109,4 +109,11 @@ describe('About', () => {
     const experienceBox = screen.getByText('5').closest('div')
     expect(experienceBox).toHaveClass('bg-[#A91D3A]')
   })
+
+  it('should render highlights list with correct number of items', () => {
+    render(<About {...defaultProps} />)
+
+    const highlights = screen.getAllByText(/▸/)
+    expect(highlights).toHaveLength(3)
+  })
 })
