@@ -69,4 +69,11 @@ describe('Header', () => {
     const header = container.querySelector('header')
     expect(header).toHaveClass('fixed')
   })
+
+  it('should render mobile menu button', () => {
+    render(<Header />)
+
+    const menuButton = screen.getByLabelText('Toggle menu')
+    expect(menuButton).toBeInTheDocument()
+  })
 })
