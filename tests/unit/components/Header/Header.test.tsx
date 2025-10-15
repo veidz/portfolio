@@ -15,4 +15,11 @@ describe('Header', () => {
 
     expect(screen.queryByText('João Victor Veidz')).not.toBeInTheDocument()
   })
+
+  it('should render all navigation links in desktop', () => {
+    render(<Header />)
+
+    const links = screen.getAllByText(/LinkedIn|GitHub|WhatsApp|Email/)
+    expect(links.length).toBeGreaterThanOrEqual(4)
+  })
 })
