@@ -45,4 +45,11 @@ describe('Hero', () => {
       'Engenheiro de Software & Desenvolvedor Full Stack',
     )
   })
+
+  it('should have section element', () => {
+    const { container } = render(<Hero {...defaultProps} />)
+
+    const section = container.querySelector('section')
+    expect(section).toBeInTheDocument()
+  })
 })
