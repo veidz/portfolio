@@ -88,7 +88,7 @@ describe('Header Visual Tests', () => {
 
   it('should maintain header visibility when scrolling', () => {
     cy.viewport(1280, 720)
-    cy.get('main').scrollTo(0, 100, { ensureScrollable: false })
+    cy.scrollTo(0, 500, { ensureScrollable: false })
     cy.get('header').should('be.visible')
   })
 })
