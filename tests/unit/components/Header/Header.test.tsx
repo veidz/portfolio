@@ -76,4 +76,18 @@ describe('Header', () => {
     const menuButton = screen.getByLabelText('Toggle menu')
     expect(menuButton).toBeInTheDocument()
   })
+
+  it('should toggle mobile menu when button is clicked', async () => {
+    const user = userEvent.setup()
+    render(<Header />)
+
+    const menuButton = screen.getByLabelText('Toggle menu')
+    expect(menuButton).toHaveAttribute('aria-expanded', 'false')
+
+    await user.click(menuButton)
+    expect(menuButton).toHaveAttribute('aria-expanded', 'true')
+
+    await user.click(menuButton)
+    expect(menuButton).toHaveAttribute('aria-expanded', 'false')
+  })
 })
