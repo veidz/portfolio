@@ -102,4 +102,11 @@ describe('About', () => {
     expect(screen.getByText('Highlight 1')).toBeInTheDocument()
     expect(screen.getByText('Highlight 2')).toBeInTheDocument()
   })
+
+  it('should have brand color accents', () => {
+    render(<About {...defaultProps} />)
+
+    const experienceBox = screen.getByText('5').closest('div')
+    expect(experienceBox).toHaveClass('bg-[#A91D3A]')
+  })
 })
