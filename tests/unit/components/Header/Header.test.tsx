@@ -51,4 +51,15 @@ describe('Header', () => {
       'mailto:joaovictorveidz@gmail.com',
     )
   })
+
+  it('should have correct href for WhatsApp', () => {
+    render(<Header />)
+
+    const whatsappLinks = screen.getAllByText('WhatsApp')
+    expect(whatsappLinks[0]).toHaveAttribute(
+      'href',
+      'https://wa.me/5511966051750',
+    )
+    expect(whatsappLinks[0]).toHaveAttribute('target', '_blank')
+  })
 })
