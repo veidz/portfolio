@@ -52,4 +52,11 @@ describe('Hero', () => {
     const section = container.querySelector('section')
     expect(section).toBeInTheDocument()
   })
+
+  it('should have min-h-screen class', () => {
+    const { container } = render(<Hero {...defaultProps} />)
+
+    const section = container.querySelector('section')
+    expect(section).toHaveClass('min-h-screen')
+  })
 })
