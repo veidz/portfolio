@@ -7,3 +7,6 @@ build
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
+tests/visual/videos
+tests/visual/screenshots
+cypress/downloads
