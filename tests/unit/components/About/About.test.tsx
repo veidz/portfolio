@@ -31,4 +31,11 @@ describe('About', () => {
       ),
     ).toBeInTheDocument()
   })
+
+  it('should render years of experience', () => {
+    render(<About {...defaultProps} />)
+
+    expect(screen.getByText('5')).toBeInTheDocument()
+    expect(screen.getByText('Experiência')).toBeInTheDocument()
+  })
 })
