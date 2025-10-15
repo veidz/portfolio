@@ -33,4 +33,16 @@ describe('Hero', () => {
       ),
     ).toBeInTheDocument()
   })
+
+  it('should have correct heading hierarchy', () => {
+    render(<Hero {...defaultProps} />)
+
+    const h1 = screen.getByRole('heading', { level: 1 })
+    const h2 = screen.getByRole('heading', { level: 2 })
+
+    expect(h1).toHaveTextContent('João Victor Veidz')
+    expect(h2).toHaveTextContent(
+      'Engenheiro de Software & Desenvolvedor Full Stack',
+    )
+  })
 })
