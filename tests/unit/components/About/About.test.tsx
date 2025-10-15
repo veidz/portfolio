@@ -45,4 +45,18 @@ describe('About', () => {
     expect(screen.getByText('São Paulo, Brasil')).toBeInTheDocument()
     expect(screen.getByText('Localização')).toBeInTheDocument()
   })
+
+  it('should render all highlights', () => {
+    render(<About {...defaultProps} />)
+
+    expect(
+      screen.getByText('Especialista em React e Next.js'),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByText('Experiência com microserviços'),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByText('Design Systems e componentização'),
+    ).toBeInTheDocument()
+  })
 })
