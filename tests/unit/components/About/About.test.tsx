@@ -66,4 +66,11 @@ describe('About', () => {
     const section = container.querySelector('section#about')
     expect(section).toBeInTheDocument()
   })
+
+  it('should have correct background color', () => {
+    const { container } = render(<About {...defaultProps} />)
+
+    const section = container.querySelector('section')
+    expect(section).toHaveClass('bg-slate-900')
+  })
 })
