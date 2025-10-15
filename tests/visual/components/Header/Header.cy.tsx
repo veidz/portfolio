@@ -69,6 +69,18 @@ describe('Header Visual Tests', () => {
     cy.contains('Veidz').should('have.class', 'text-[#A91D3A]')
   })
 
+  it('should render logo with Pacifico font', () => {
+    cy.contains('Veidz').should(
+      'have.class',
+      'font-[family-name:var(--font-pacifico)]',
+    )
+  })
+
+  it('should render logo with correct text size', () => {
+    cy.contains('Veidz').should('have.class', 'text-3xl')
+    cy.contains('Veidz').should('have.class', 'font-bold')
+  })
+
   it('should have hover effects on navigation links', () => {
     cy.viewport(1280, 720)
     cy.get('nav.hidden.md\\:flex').within(() => {

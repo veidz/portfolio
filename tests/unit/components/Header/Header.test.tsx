@@ -10,6 +10,20 @@ describe('Header', () => {
     expect(screen.getByText('Veidz')).toBeInTheDocument()
   })
 
+  it('should render logo with Pacifico font', () => {
+    render(<Header />)
+
+    const logo = screen.getByText('Veidz')
+    expect(logo).toHaveClass('font-[family-name:var(--font-pacifico)]')
+  })
+
+  it('should render logo with correct size', () => {
+    render(<Header />)
+
+    const logo = screen.getByText('Veidz')
+    expect(logo).toHaveClass('text-3xl')
+  })
+
   it('should not render full name', () => {
     render(<Header />)
 
