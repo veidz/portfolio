@@ -38,4 +38,11 @@ describe('About', () => {
     expect(screen.getByText('5')).toBeInTheDocument()
     expect(screen.getByText('Experiência')).toBeInTheDocument()
   })
+
+  it('should render location', () => {
+    render(<About {...defaultProps} />)
+
+    expect(screen.getByText('São Paulo, Brasil')).toBeInTheDocument()
+    expect(screen.getByText('Localização')).toBeInTheDocument()
+  })
 })
