@@ -71,7 +71,7 @@ describe('About', () => {
     const { container } = render(<About {...defaultProps} />)
 
     const section = container.querySelector('section')
-    expect(section).toHaveClass('bg-slate-900')
+    expect(section).toHaveClass('bg-[var(--bg-secondary)]')
   })
 
   it('should have heading hierarchy', () => {
@@ -107,7 +107,7 @@ describe('About', () => {
     render(<About {...defaultProps} />)
 
     const experienceBox = screen.getByText('5').closest('div')
-    expect(experienceBox).toHaveClass('bg-[#A91D3A]')
+    expect(experienceBox).toHaveClass('bg-[var(--brand-primary)]')
   })
 
   it('should render highlights list with correct number of items', () => {

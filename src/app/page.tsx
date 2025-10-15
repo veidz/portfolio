@@ -4,7 +4,7 @@ import { About } from '@/components/About/About'
 
 export default function Home() {
   return (
-    <div className='min-h-screen bg-slate-950'>
+    <div className='min-h-screen bg-[var(--bg-primary)]'>
       <Header />
       <Hero
         name='João Victor Veidz'
