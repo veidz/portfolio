@@ -22,4 +22,15 @@ describe('Header', () => {
     const links = screen.getAllByText(/LinkedIn|GitHub|WhatsApp|Email/)
     expect(links.length).toBeGreaterThanOrEqual(4)
   })
+
+  it('should have correct href for LinkedIn', () => {
+    render(<Header />)
+
+    const linkedinLinks = screen.getAllByText('LinkedIn')
+    expect(linkedinLinks[0]).toHaveAttribute(
+      'href',
+      'https://linkedin.com/in/veidz',
+    )
+    expect(linkedinLinks[0]).toHaveAttribute('target', '_blank')
+  })
 })
