@@ -105,9 +105,7 @@ describe('Hero', () => {
   it('should apply Pacifico font to last name', () => {
     const { container } = render(<Hero {...defaultProps} />)
 
-    const lastName = container.querySelector(
-      '.font-\\[family-name\\:var\\(--font-pacifico\\)\\]',
-    )
+    const lastName = container.querySelector('.font-family-pacifico')
     expect(lastName).toBeInTheDocument()
     expect(lastName).toHaveTextContent('Veidz')
   })

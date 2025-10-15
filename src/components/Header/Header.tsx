@@ -19,7 +19,7 @@ export const Header = () => {
   return (
     <header className='fixed top-0 left-0 right-0 z-50 bg-bg-header backdrop-blur-sm border-b border-border-primary'>
       <div className='container mx-auto px-4 py-4 flex items-center justify-between'>
-        <h1 className='text-3xl font-bold text-brand tracking-tight font-[family-name:var(--font-pacifico)]'>
+        <h1 className='text-3xl font-bold text-brand tracking-tight font-family-pacifico'>
           Veidz
         </h1>
 

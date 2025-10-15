@@ -13,9 +13,7 @@ export const Hero = ({ name, title, description }: HeroProps) => {
         <div className='max-w-4xl mx-auto text-center'>
           <h1 className='text-5xl md:text-7xl font-bold text-text-primary mb-4'>
             <span>{restOfName} </span>
-            <span className='font-[family-name:var(--font-pacifico)] text-brand'>
-              {lastWord}
-            </span>
+            <span className='font-family-pacifico text-brand'>{lastWord}</span>
           </h1>
           <h2 className='text-2xl md:text-4xl text-brand mb-6'>{title}</h2>
           <p className='text-lg md:text-xl text-text-secondary max-w-2xl mx-auto'>

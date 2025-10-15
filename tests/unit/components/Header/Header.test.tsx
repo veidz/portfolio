@@ -14,7 +14,7 @@ describe('Header', () => {
     render(<Header />)
 
     const logo = screen.getByText('Veidz')
-    expect(logo).toHaveClass('font-[family-name:var(--font-pacifico)]')
+    expect(logo).toHaveClass('font-family-pacifico')
   })
 
   it('should render logo with correct size', () => {
