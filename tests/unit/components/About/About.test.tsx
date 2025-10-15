@@ -73,4 +73,14 @@ describe('About', () => {
     const section = container.querySelector('section')
     expect(section).toHaveClass('bg-slate-900')
   })
+
+  it('should have heading hierarchy', () => {
+    render(<About {...defaultProps} />)
+
+    const h2 = screen.getByRole('heading', { level: 2, name: 'Sobre Mim' })
+    const h3 = screen.getByRole('heading', { level: 3, name: 'Destaques' })
+
+    expect(h2).toBeInTheDocument()
+    expect(h3).toBeInTheDocument()
+  })
 })
