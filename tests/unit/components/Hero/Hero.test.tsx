@@ -11,9 +11,10 @@ describe('Hero', () => {
   }
 
   it('should render name', () => {
-    render(<Hero {...defaultProps} />)
+    const { container } = render(<Hero {...defaultProps} />)
 
-    expect(screen.getByText('João Victor Veidz')).toBeInTheDocument()
+    const h1 = container.querySelector('h1')
+    expect(h1).toHaveTextContent('João Victor Veidz')
   })
 
   it('should render title', () => {
@@ -68,9 +69,9 @@ describe('Hero', () => {
   })
 
   it('should have correct text colors', () => {
-    render(<Hero {...defaultProps} />)
+    const { container } = render(<Hero {...defaultProps} />)
 
-    const name = screen.getByText('João Victor Veidz')
+    const h1 = container.querySelector('h1')
     const title = screen.getByText(
       'Engenheiro de Software & Desenvolvedor Full Stack',
     )
@@ -78,7 +79,7 @@ describe('Hero', () => {
       '5 anos de experiência construindo soluções web modernas e escaláveis com React, Next.js, Node.js e muito mais.',
     )
 
-    expect(name).toHaveClass('text-[var(--text-primary)]')
+    expect(h1).toHaveClass('text-[var(--text-primary)]')
     expect(title).toHaveClass('text-[var(--brand-primary)]')
     expect(description).toHaveClass('text-[var(--text-secondary)]')
   })
@@ -90,9 +91,10 @@ describe('Hero', () => {
       description: 'Test Description',
     }
 
-    render(<Hero {...customProps} />)
+    const { container } = render(<Hero {...customProps} />)
 
-    expect(screen.getByText('Test Name')).toBeInTheDocument()
+    const h1 = container.querySelector('h1')
+    expect(h1).toHaveTextContent('Test Name')
     expect(screen.getByText('Test Title')).toBeInTheDocument()
     expect(screen.getByText('Test Description')).toBeInTheDocument()
   })
@@ -104,5 +106,25 @@ describe('Hero', () => {
     expect(section).toHaveClass('flex')
     expect(section).toHaveClass('items-center')
     expect(section).toHaveClass('justify-center')
+  })
+
+  it('should apply Pacifico font to last name', () => {
+    const { container } = render(<Hero {...defaultProps} />)
+
+    const lastName = container.querySelector(
+      '.font-\\[family-name\\:var\\(--font-pacifico\\)\\]',
+    )
+    expect(lastName).toBeInTheDocument()
+    expect(lastName).toHaveTextContent('Veidz')
+  })
+
+  it('should apply brand color to last name', () => {
+    const { container } = render(<Hero {...defaultProps} />)
+
+    const lastName = container.querySelector(
+      '.text-\\[var\\(--brand-primary\\)\\]',
+    )
+    expect(lastName).toBeInTheDocument()
+    expect(lastName).toHaveTextContent('Veidz')
   })
 })

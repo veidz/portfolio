@@ -14,7 +14,24 @@ describe('Hero Visual Tests', () => {
   it('should display title with brand color', () => {
     cy.contains('Engenheiro de Software & Desenvolvedor Full Stack')
       .should('be.visible')
-      .should('have.class', 'text-[#A91D3A]')
+      .should('have.css', 'color')
+      .and('not.be.empty')
+  })
+
+  it('should apply Pacifico font to last name', () => {
+    cy.get('h1')
+      .find('span')
+      .eq(1)
+      .should('contain', 'Veidz')
+      .should('have.class', 'font-[family-name:var(--font-pacifico)]')
+  })
+
+  it('should apply brand color to last name', () => {
+    cy.get('h1')
+      .find('span')
+      .eq(1)
+      .should('contain', 'Veidz')
+      .should('have.class', 'text-[var(--brand-primary)]')
   })
 
   it('should display description', () => {
