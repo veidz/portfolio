@@ -96,4 +96,13 @@ describe('Hero', () => {
     expect(screen.getByText('Test Title')).toBeInTheDocument()
     expect(screen.getByText('Test Description')).toBeInTheDocument()
   })
+
+  it('should center content', () => {
+    const { container } = render(<Hero {...defaultProps} />)
+
+    const section = container.querySelector('section')
+    expect(section).toHaveClass('flex')
+    expect(section).toHaveClass('items-center')
+    expect(section).toHaveClass('justify-center')
+  })
 })
