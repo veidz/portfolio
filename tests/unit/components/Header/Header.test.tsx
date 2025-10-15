@@ -62,4 +62,11 @@ describe('Header', () => {
     )
     expect(whatsappLinks[0]).toHaveAttribute('target', '_blank')
   })
+
+  it('should have fixed positioning', () => {
+    const { container } = render(<Header />)
+
+    const header = container.querySelector('header')
+    expect(header).toHaveClass('fixed')
+  })
 })
