@@ -33,4 +33,12 @@ describe('Header', () => {
     )
     expect(linkedinLinks[0]).toHaveAttribute('target', '_blank')
   })
+
+  it('should have correct href for GitHub', () => {
+    render(<Header />)
+
+    const githubLinks = screen.getAllByText('GitHub')
+    expect(githubLinks[0]).toHaveAttribute('href', 'https://github.com/veidz')
+    expect(githubLinks[0]).toHaveAttribute('target', '_blank')
+  })
 })
