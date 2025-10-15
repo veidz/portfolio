@@ -41,4 +41,14 @@ describe('Header', () => {
     expect(githubLinks[0]).toHaveAttribute('href', 'https://github.com/veidz')
     expect(githubLinks[0]).toHaveAttribute('target', '_blank')
   })
+
+  it('should have correct href for Email', () => {
+    render(<Header />)
+
+    const emailLinks = screen.getAllByText('Email')
+    expect(emailLinks[0]).toHaveAttribute(
+      'href',
+      'mailto:joaovictorveidz@gmail.com',
+    )
+  })
 })
