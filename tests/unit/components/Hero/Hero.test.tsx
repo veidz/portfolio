@@ -15,4 +15,12 @@ describe('Hero', () => {
 
     expect(screen.getByText('João Victor Veidz')).toBeInTheDocument()
   })
+
+  it('should render title', () => {
+    render(<Hero {...defaultProps} />)
+
+    expect(
+      screen.getByText('Engenheiro de Software & Desenvolvedor Full Stack'),
+    ).toBeInTheDocument()
+  })
 })
