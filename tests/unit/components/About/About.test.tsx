@@ -21,4 +21,14 @@ describe('About', () => {
 
     expect(screen.getByText('Sobre Mim')).toBeInTheDocument()
   })
+
+  it('should render description', () => {
+    render(<About {...defaultProps} />)
+
+    expect(
+      screen.getByText(
+        'Desenvolvedor apaixonado por criar soluções web modernas e escaláveis.',
+      ),
+    ).toBeInTheDocument()
+  })
 })
