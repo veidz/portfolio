@@ -10,7 +10,7 @@ export default defineConfig({
     globals: true,
     coverage: {
       provider: 'v8',
-      reporter: ['text', 'json', 'html'],
+      reporter: ['text', 'json', 'html', 'json-summary'],
       exclude: [
         'node_modules/',
         'tests/visual/',
@@ -18,6 +18,9 @@ export default defineConfig({
         '*.config.*',
         '**/*.types.ts',
         '**/*.cy.tsx',
+        'src/app/layout.tsx',
+        'src/app/page.tsx',
+        'next-env.d.ts',
       ],
     },
   },
