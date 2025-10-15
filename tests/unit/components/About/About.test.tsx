@@ -116,4 +116,11 @@ describe('About', () => {
     const highlights = screen.getAllByText(/▸/)
     expect(highlights).toHaveLength(3)
   })
+
+  it('should have responsive padding', () => {
+    const { container } = render(<About {...defaultProps} />)
+
+    const section = container.querySelector('section')
+    expect(section).toHaveClass('py-20')
+  })
 })
