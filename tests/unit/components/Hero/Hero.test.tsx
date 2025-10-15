@@ -59,4 +59,11 @@ describe('Hero', () => {
     const section = container.querySelector('section')
     expect(section).toHaveClass('min-h-screen')
   })
+
+  it('should have dark background', () => {
+    const { container } = render(<Hero {...defaultProps} />)
+
+    const section = container.querySelector('section')
+    expect(section).toHaveClass('bg-slate-950')
+  })
 })
