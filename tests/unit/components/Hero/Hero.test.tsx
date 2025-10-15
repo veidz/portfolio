@@ -23,4 +23,14 @@ describe('Hero', () => {
       screen.getByText('Engenheiro de Software & Desenvolvedor Full Stack'),
     ).toBeInTheDocument()
   })
+
+  it('should render description', () => {
+    render(<Hero {...defaultProps} />)
+
+    expect(
+      screen.getByText(
+        '5 anos de experiência construindo soluções web modernas e escaláveis com React, Next.js, Node.js e muito mais.',
+      ),
+    ).toBeInTheDocument()
+  })
 })
