@@ -10,7 +10,7 @@ describe('About', () => {
     yearsOfExperience: 5,
     location: 'São Paulo, Brasil',
     highlights: [
-      'Especialista em React e Next.js',
+      'Conhecimento vasto em React e Next.js',
       'Experiência com microserviços',
       'Design Systems e componentização',
     ],
@@ -50,7 +50,7 @@ describe('About', () => {
     render(<About {...defaultProps} />)
 
     expect(
-      screen.getByText('Especialista em React e Next.js'),
+      screen.getByText('Conhecimento vasto em React e Next.js'),
     ).toBeInTheDocument()
     expect(
       screen.getByText('Experiência com microserviços'),
@@ -71,7 +71,7 @@ describe('About', () => {
     const { container } = render(<About {...defaultProps} />)
 
     const section = container.querySelector('section')
-    expect(section).toHaveClass('bg-[var(--bg-secondary)]')
+    expect(section).toHaveClass('bg-bg-secondary')
   })
 
   it('should have heading hierarchy', () => {
@@ -107,7 +107,7 @@ describe('About', () => {
     render(<About {...defaultProps} />)
 
     const experienceBox = screen.getByText('5').closest('div')
-    expect(experienceBox).toHaveClass('bg-[var(--brand-primary)]')
+    expect(experienceBox).toHaveClass('bg-brand')
   })
 
   it('should render highlights list with correct number of items', () => {

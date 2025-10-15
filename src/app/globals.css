@@ -1,58 +1,32 @@
 @import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-
+@theme inline {
   /* Brand Colors */
-  --brand-primary: #a91d3a;
-  --brand-primary-hover: #8a1730;
+  --color-brand: #a91d3a;
 
   /* Background Colors */
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #0f172a;
-  --bg-tertiary: #1e293b;
-  --bg-card: #1e293b;
-  --bg-header: rgba(2, 6, 23, 0.8);
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #0f172a;
+  --color-bg-card: #1e293b;
+  --color-bg-header: rgba(2, 6, 23, 0.8);
 
   /* Text Colors */
-  --text-primary: #ffffff;
-  --text-secondary: #d1d5db;
-  --text-muted: #9ca3af;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #d1d5db;
+  --color-text-muted: #9ca3af;
 
   /* Border Colors */
-  --border-primary: #1e293b;
+  --color-border-primary: #1e293b;
 
-  /* Font Sizes */
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
-  --text-7xl: 4.5rem;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-brand-primary: var(--brand-primary);
-  --color-brand-primary-hover: var(--brand-primary-hover);
-  --color-bg-primary: var(--bg-primary);
-  --color-bg-secondary: var(--bg-secondary);
-  --color-bg-tertiary: var(--bg-tertiary);
-  --color-bg-card: var(--bg-card);
-  --color-bg-header: var(--bg-header);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-muted: var(--text-muted);
-  --color-border-primary: var(--border-primary);
+  /* Fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-pacifico: var(--font-pacifico);
+}
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -19,9 +19,9 @@ const pacifico = Pacifico({
 })
 
 export const metadata: Metadata = {
-  title: 'João Victor Veidz | Desenvolvedor Full Stack',
+  title: 'João Victor Veidz | Engenheiro de Software',
   description:
-    'Portfolio de João Victor Veidz - Desenvolvedor Full Stack especializado em React, Next.js, TypeScript e Node.js',
+    'Portfolio de João Victor Veidz - Engenheiro de Software especializado em React, Next.js, TypeScript e Node.js',
 }
 
 export default function RootLayout({

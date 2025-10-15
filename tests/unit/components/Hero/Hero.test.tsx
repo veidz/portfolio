@@ -5,7 +5,7 @@ import { Hero } from '@/components/Hero/Hero'
 describe('Hero', () => {
   const defaultProps = {
     name: 'João Victor Veidz',
-    title: 'Engenheiro de Software & Desenvolvedor Full Stack',
+    title: 'Engenheiro de Software',
     description:
       '5 anos de experiência construindo soluções web modernas e escaláveis com React, Next.js, Node.js e muito mais.',
   }
@@ -20,9 +20,7 @@ describe('Hero', () => {
   it('should render title', () => {
     render(<Hero {...defaultProps} />)
 
-    expect(
-      screen.getByText('Engenheiro de Software & Desenvolvedor Full Stack'),
-    ).toBeInTheDocument()
+    expect(screen.getByText('Engenheiro de Software')).toBeInTheDocument()
   })
 
   it('should render description', () => {
@@ -42,9 +40,7 @@ describe('Hero', () => {
     const h2 = screen.getByRole('heading', { level: 2 })
 
     expect(h1).toHaveTextContent('João Victor Veidz')
-    expect(h2).toHaveTextContent(
-      'Engenheiro de Software & Desenvolvedor Full Stack',
-    )
+    expect(h2).toHaveTextContent('Engenheiro de Software')
   })
 
   it('should have section element', () => {
@@ -65,23 +61,21 @@ describe('Hero', () => {
     const { container } = render(<Hero {...defaultProps} />)
 
     const section = container.querySelector('section')
-    expect(section).toHaveClass('bg-[var(--bg-primary)]')
+    expect(section).toHaveClass('bg-bg-primary')
   })
 
   it('should have correct text colors', () => {
     const { container } = render(<Hero {...defaultProps} />)
 
     const h1 = container.querySelector('h1')
-    const title = screen.getByText(
-      'Engenheiro de Software & Desenvolvedor Full Stack',
-    )
+    const title = screen.getByText('Engenheiro de Software')
     const description = screen.getByText(
       '5 anos de experiência construindo soluções web modernas e escaláveis com React, Next.js, Node.js e muito mais.',
     )
 
-    expect(h1).toHaveClass('text-[var(--text-primary)]')
-    expect(title).toHaveClass('text-[var(--brand-primary)]')
-    expect(description).toHaveClass('text-[var(--text-secondary)]')
+    expect(h1).toHaveClass('text-text-primary')
+    expect(title).toHaveClass('text-brand')
+    expect(description).toHaveClass('text-text-secondary')
   })
 
   it('should render with custom content', () => {
@@ -118,12 +112,10 @@ describe('Hero', () => {
     expect(lastName).toHaveTextContent('Veidz')
   })
 
-  it('should apply brand color to last name', () => {
+  it('should apply brand color to Veidz', () => {
     const { container } = render(<Hero {...defaultProps} />)
 
-    const lastName = container.querySelector(
-      '.text-\\[var\\(--brand-primary\\)\\]',
-    )
+    const lastName = container.querySelector('.text-brand')
     expect(lastName).toBeInTheDocument()
     expect(lastName).toHaveTextContent('Veidz')
   })
