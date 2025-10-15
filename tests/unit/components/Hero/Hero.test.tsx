@@ -82,4 +82,18 @@ describe('Hero', () => {
     expect(title).toHaveClass('text-[#A91D3A]')
     expect(description).toHaveClass('text-gray-300')
   })
+
+  it('should render with custom content', () => {
+    const customProps = {
+      name: 'Test Name',
+      title: 'Test Title',
+      description: 'Test Description',
+    }
+
+    render(<Hero {...customProps} />)
+
+    expect(screen.getByText('Test Name')).toBeInTheDocument()
+    expect(screen.getByText('Test Title')).toBeInTheDocument()
+    expect(screen.getByText('Test Description')).toBeInTheDocument()
+  })
 })
