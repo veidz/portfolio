@@ -83,4 +83,23 @@ describe('About', () => {
     expect(h2).toBeInTheDocument()
     expect(h3).toBeInTheDocument()
   })
+
+  it('should render with custom content', () => {
+    const customProps = {
+      title: 'About Me',
+      description: 'Custom description',
+      yearsOfExperience: 10,
+      location: 'Rio de Janeiro, Brasil',
+      highlights: ['Highlight 1', 'Highlight 2'],
+    }
+
+    render(<About {...customProps} />)
+
+    expect(screen.getByText('About Me')).toBeInTheDocument()
+    expect(screen.getByText('Custom description')).toBeInTheDocument()
+    expect(screen.getByText('10')).toBeInTheDocument()
+    expect(screen.getByText('Rio de Janeiro, Brasil')).toBeInTheDocument()
+    expect(screen.getByText('Highlight 1')).toBeInTheDocument()
+    expect(screen.getByText('Highlight 2')).toBeInTheDocument()
+  })
 })
