@@ -66,4 +66,20 @@ describe('Hero', () => {
     const section = container.querySelector('section')
     expect(section).toHaveClass('bg-slate-950')
   })
+
+  it('should have correct text colors', () => {
+    render(<Hero {...defaultProps} />)
+
+    const name = screen.getByText('João Victor Veidz')
+    const title = screen.getByText(
+      'Engenheiro de Software & Desenvolvedor Full Stack',
+    )
+    const description = screen.getByText(
+      '5 anos de experiência construindo soluções web modernas e escaláveis com React, Next.js, Node.js e muito mais.',
+    )
+
+    expect(name).toHaveClass('text-white')
+    expect(title).toHaveClass('text-[#A91D3A]')
+    expect(description).toHaveClass('text-gray-300')
+  })
 })
