@@ -90,4 +90,24 @@ describe('Header', () => {
     await user.click(menuButton)
     expect(menuButton).toHaveAttribute('aria-expanded', 'false')
   })
+
+  it('should close mobile menu when a link is clicked', async () => {
+    const user = userEvent.setup()
+    render(<Header />)
+
+    const menuButton = screen.getByLabelText('Toggle menu')
+    await user.click(menuButton)
+
+    expect(menuButton).toHaveAttribute('aria-expanded', 'true')
+
+    const mobileLinks = screen.getAllByText('LinkedIn')
+    const mobileLink = mobileLinks.find((link) =>
+      link.closest('nav')?.className.includes('flex-col'),
+    )
+
+    if (mobileLink) {
+      await user.click(mobileLink)
+      expect(menuButton).toHaveAttribute('aria-expanded', 'false')
+    }
+  })
 })
