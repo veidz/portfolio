@@ -240,4 +240,57 @@ describe('Contact', () => {
 
     expect(section).toHaveAttribute('id', 'contact')
   })
+
+  it('should disable submit button when form is invalid', () => {
+    render(<Contact {...mockProps} />)
+
+    const submitButton = screen.getByRole('button', { name: 'Enviar Mensagem' })
+
+    expect(submitButton).toBeDisabled()
+  })
+
+  it('should enable submit button when all fields are valid', () => {
+    render(<Contact {...mockProps} />)
+
+    const nameInput = screen.getByLabelText('Nome')
+    const emailInput = screen.getByLabelText('Email')
+    const messageInput = screen.getByLabelText('Mensagem')
+    const submitButton = screen.getByRole('button', { name: 'Enviar Mensagem' })
+
+    expect(submitButton).toBeDisabled()
+
+    fireEvent.change(nameInput, { target: { value: 'João Silva' } })
+    expect(submitButton).toBeDisabled()
+
+    fireEvent.change(emailInput, { target: { value: 'invalidemail' } })
+    expect(submitButton).toBeDisabled()
+
+    fireEvent.change(emailInput, { target: { value: 'joao@example.com' } })
+    expect(submitButton).toBeDisabled()
+
+    fireEvent.change(messageInput, {
+      target: { value: 'Olá, gostaria de conversar!' },
+    })
+    expect(submitButton).not.toBeDisabled()
+  })
+
+  it('should show validation error for invalid email', () => {
+    render(<Contact {...mockProps} />)
+
+    const emailInput = screen.getByLabelText('Email')
+
+    fireEvent.change(emailInput, { target: { value: 'invalidemail' } })
+
+    expect(screen.getByText('Email inválido')).toBeInTheDocument()
+  })
+
+  it('should not show validation error for valid email', () => {
+    render(<Contact {...mockProps} />)
+
+    const emailInput = screen.getByLabelText('Email')
+
+    fireEvent.change(emailInput, { target: { value: 'joao@example.com' } })
+
+    expect(screen.queryByText('Email inválido')).not.toBeInTheDocument()
+  })
 })

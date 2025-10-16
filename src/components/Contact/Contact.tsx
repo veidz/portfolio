@@ -19,8 +19,26 @@ export const Contact = ({
   >('idle')
   const [errorMessage, setErrorMessage] = useState('')
 
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
+  }
+
+  const isFormValid = (): boolean => {
+    return (
+      formData.name.trim().length > 0 &&
+      validateEmail(formData.email) &&
+      formData.message.trim().length > 0
+    )
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (!isFormValid()) {
+      return
+    }
+
     setFormStatus('sending')
     setErrorMessage('')
 
@@ -173,9 +191,21 @@ export const Contact = ({
                     onChange={handleChange}
                     required
                     disabled={formStatus === 'sending'}
-                    className='w-full px-4 py-3 bg-bg-card border border-border-primary rounded-lg focus:outline-none focus:border-brand transition-colors text-text-primary disabled:opacity-50'
+                    className={`w-full px-4 py-3 bg-bg-card border rounded-lg focus:outline-none transition-colors text-text-primary disabled:opacity-50 ${
+                      formData.email.length > 0
+                        ? validateEmail(formData.email)
+                          ? 'border-green-500 focus:border-green-500'
+                          : 'border-red-500 focus:border-red-500'
+                        : 'border-border-primary focus:border-brand'
+                    }`}
                     placeholder='seu@email.com'
                   />
+                  {formData.email.length > 0 &&
+                    !validateEmail(formData.email) && (
+                      <p className='text-xs text-red-500 mt-1'>
+                        Email inválido
+                      </p>
+                    )}
                 </div>
 
                 <div>
@@ -200,8 +230,8 @@ export const Contact = ({
 
                 <button
                   type='submit'
-                  disabled={formStatus === 'sending'}
-                  className='w-full px-6 py-3 bg-brand text-text-primary rounded-lg hover:opacity-90 transition-opacity font-medium disabled:opacity-50'
+                  disabled={formStatus === 'sending' || !isFormValid()}
+                  className='w-full px-6 py-3 bg-brand text-text-primary rounded-lg hover:opacity-90 transition-opacity font-medium disabled:opacity-50 disabled:cursor-not-allowed'
                 >
                   {formStatus === 'sending'
                     ? 'Enviando...'
