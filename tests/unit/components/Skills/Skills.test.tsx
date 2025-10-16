@@ -81,4 +81,11 @@ describe('Skills', () => {
     const section = container.querySelector('section')
     expect(section).toHaveClass('bg-bg-primary')
   })
+
+  it('should have correct text colors', () => {
+    const { container } = render(<Skills {...defaultProps} />)
+
+    const title = container.querySelector('h2')
+    expect(title).toHaveClass('text-text-primary')
+  })
 })
