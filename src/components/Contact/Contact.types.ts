@@ -1,12 +1,14 @@
+export type IconType = 'email' | 'whatsapp' | 'location' | 'github' | 'linkedin'
+
 export interface ContactInfo {
-  icon: string
+  icon: IconType
   label: string
   value: string
   link?: string
 }
 
 export interface SocialLink {
-  icon: string
+  icon: IconType
   label: string
   url: string
 }

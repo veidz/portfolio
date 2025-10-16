@@ -5,26 +5,33 @@ const mockProps = {
   subtitle: 'Vamos trabalhar juntos',
   contactInfo: [
     {
-      icon: '📧',
+      icon: 'email' as const,
       label: 'Email',
       value: 'contato@example.com',
       link: 'mailto:contato@example.com',
     },
     {
-      icon: '📱',
+      icon: 'whatsapp' as const,
       label: 'Telefone',
       value: '+55 11 99999-9999',
     },
     {
-      icon: '📍',
+      icon: 'location' as const,
       label: 'Localização',
       value: 'São Paulo, Brasil',
     },
   ],
   socialLinks: [
-    { icon: '🐙', label: 'GitHub', url: 'https://github.com/veidz' },
-    { icon: '💼', label: 'LinkedIn', url: 'https://linkedin.com/in/veidz' },
-    { icon: '🐦', label: 'Twitter', url: 'https://twitter.com/veidz' },
+    {
+      icon: 'github' as const,
+      label: 'GitHub',
+      url: 'https://github.com/veidz',
+    },
+    {
+      icon: 'linkedin' as const,
+      label: 'LinkedIn',
+      url: 'https://linkedin.com/in/veidz',
+    },
   ],
 }
 

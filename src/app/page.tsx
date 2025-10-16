@@ -228,31 +228,31 @@ export default function Home() {
         subtitle='Vamos trabalhar juntos no seu próximo projeto'
         contactInfo={[
           {
-            icon: '📧',
+            icon: 'email' as const,
             label: 'Email',
             value: 'joaovictorveidz@gmail.com',
             link: 'mailto:joaovictorveidz@gmail.com',
           },
           {
-            icon: '💬',
+            icon: 'whatsapp' as const,
             label: 'WhatsApp',
             value: '+55 11 96605-1750',
-            link: 'https://wa.me/5511966051750?text=Olá!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar.',
+            link: 'https://wa.me/5511966051750?text=Olá!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.',
           },
           {
-            icon: '📍',
+            icon: 'location' as const,
             label: 'Localização',
             value: 'São Paulo, Brasil',
           },
         ]}
         socialLinks={[
           {
-            icon: '🐙',
+            icon: 'github' as const,
             label: 'GitHub',
             url: 'https://github.com/veidz',
           },
           {
-            icon: '💼',
+            icon: 'linkedin' as const,
             label: 'LinkedIn',
             url: 'https://linkedin.com/in/veidz',
           },

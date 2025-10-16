@@ -8,26 +8,33 @@ const mockProps: ContactProps = {
   subtitle: 'Vamos trabalhar juntos',
   contactInfo: [
     {
-      icon: '📧',
+      icon: 'email' as const,
       label: 'Email',
       value: 'contato@example.com',
       link: 'mailto:contato@example.com',
     },
     {
-      icon: '📱',
+      icon: 'whatsapp' as const,
       label: 'Telefone',
       value: '+55 11 99999-9999',
     },
     {
-      icon: '📍',
+      icon: 'location' as const,
       label: 'Localização',
       value: 'São Paulo, Brasil',
     },
   ],
   socialLinks: [
-    { icon: '🐙', label: 'GitHub', url: 'https://github.com/veidz' },
-    { icon: '💼', label: 'LinkedIn', url: 'https://linkedin.com/in/veidz' },
-    { icon: '🐦', label: 'Twitter', url: 'https://twitter.com/veidz' },
+    {
+      icon: 'github' as const,
+      label: 'GitHub',
+      url: 'https://github.com/veidz',
+    },
+    {
+      icon: 'linkedin' as const,
+      label: 'LinkedIn',
+      url: 'https://linkedin.com/in/veidz',
+    },
   ],
 }
 
@@ -58,14 +65,6 @@ describe('Contact', () => {
     expect(screen.getByText('São Paulo, Brasil')).toBeInTheDocument()
   })
 
-  it('should render contact info icons', () => {
-    render(<Contact {...mockProps} />)
-
-    expect(screen.getByText('📧')).toBeInTheDocument()
-    expect(screen.getByText('📱')).toBeInTheDocument()
-    expect(screen.getByText('📍')).toBeInTheDocument()
-  })
-
   it('should render contact info with links', () => {
     render(<Contact {...mockProps} />)
 
@@ -88,16 +87,6 @@ describe('Contact', () => {
       'href',
       'https://linkedin.com/in/veidz',
     )
-
-    const twitterLink = screen.getByLabelText('Twitter')
-    expect(twitterLink).toHaveAttribute('href', 'https://twitter.com/veidz')
-  })
-
-  it('should render social link icons', () => {
-    render(<Contact {...mockProps} />)
-
-    const icons = screen.getAllByText(/🐙|💼|🐦/)
-    expect(icons).toHaveLength(3)
   })
 
   it('should render contact form with all fields', () => {

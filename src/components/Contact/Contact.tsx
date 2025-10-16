@@ -1,7 +1,16 @@
 'use client'
 
 import { useState } from 'react'
+import { Mail, MessageCircle, MapPin, Github, Linkedin } from 'lucide-react'
 import { ContactProps } from './Contact.types'
+
+const iconMap = {
+  email: Mail,
+  whatsapp: MessageCircle,
+  location: MapPin,
+  github: Github,
+  linkedin: Linkedin,
+}
 
 export const Contact = ({
   title,
@@ -107,26 +116,31 @@ export const Contact = ({
               </h3>
 
               <div className='space-y-6 mb-8'>
-                {contactInfo.map((info, index) => (
-                  <div key={index} className='flex items-start gap-4'>
-                    <div className='text-3xl flex-shrink-0'>{info.icon}</div>
-                    <div>
-                      <p className='text-sm text-text-secondary mb-1'>
-                        {info.label}
-                      </p>
-                      {info.link ? (
-                        <a
-                          href={info.link}
-                          className='text-text-primary hover:text-brand transition-colors'
-                        >
-                          {info.value}
-                        </a>
-                      ) : (
-                        <p className='text-text-primary'>{info.value}</p>
-                      )}
+                {contactInfo.map((info, index) => {
+                  const IconComponent = iconMap[info.icon]
+                  return (
+                    <div key={index} className='flex items-start gap-4'>
+                      <div className='text-brand flex-shrink-0'>
+                        <IconComponent size={28} strokeWidth={2} />
+                      </div>
+                      <div>
+                        <p className='text-sm text-text-secondary mb-1'>
+                          {info.label}
+                        </p>
+                        {info.link ? (
+                          <a
+                            href={info.link}
+                            className='text-text-primary hover:text-brand transition-colors'
+                          >
+                            {info.value}
+                          </a>
+                        ) : (
+                          <p className='text-text-primary'>{info.value}</p>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
 
               <div>
@@ -134,18 +148,21 @@ export const Contact = ({
                   Redes Sociais
                 </h4>
                 <div className='flex gap-4'>
-                  {socialLinks.map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.url}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className='w-12 h-12 flex items-center justify-center bg-bg-card border border-border-primary rounded-lg hover:border-brand hover:scale-110 transition-all duration-300 text-2xl'
-                      aria-label={social.label}
-                    >
-                      {social.icon}
-                    </a>
-                  ))}
+                  {socialLinks.map((social, index) => {
+                    const IconComponent = iconMap[social.icon]
+                    return (
+                      <a
+                        key={index}
+                        href={social.url}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        className='w-12 h-12 flex items-center justify-center bg-bg-card border border-border-primary rounded-lg hover:border-brand hover:scale-110 transition-all duration-300 text-text-secondary hover:text-brand'
+                        aria-label={social.label}
+                      >
+                        <IconComponent size={24} strokeWidth={2} />
+                      </a>
+                    )
+                  })}
                 </div>
               </div>
             </div>
