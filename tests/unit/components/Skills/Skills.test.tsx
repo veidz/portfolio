@@ -112,4 +112,14 @@ describe('Skills', () => {
     )
     expect(progressBars.length).toBeGreaterThan(0)
   })
+
+  it('should have hover effect on skill cards', () => {
+    const { container } = render(<Skills {...defaultProps} />)
+
+    const skillCards = container.querySelectorAll('.bg-bg-card')
+    expect(skillCards.length).toBeGreaterThan(0)
+    skillCards.forEach((card) => {
+      expect(card).toHaveClass('hover:border-brand')
+    })
+  })
 })
