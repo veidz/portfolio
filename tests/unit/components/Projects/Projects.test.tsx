@@ -86,4 +86,11 @@ describe('Projects', () => {
     expect(screen.getByText('Mais de 10k usuários')).toBeInTheDocument()
     expect(screen.getByText('Interface intuitiva')).toBeInTheDocument()
   })
+
+  it('should render live url button when provided', () => {
+    render(<Projects {...defaultProps} />)
+
+    const liveButtons = screen.getAllByText('Ver Projeto')
+    expect(liveButtons).toHaveLength(1)
+  })
 })
