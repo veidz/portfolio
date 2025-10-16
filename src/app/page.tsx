@@ -2,6 +2,7 @@ import { Header } from '@/components/Header/Header'
 import { Hero } from '@/components/Hero/Hero'
 import { About } from '@/components/About/About'
 import { Skills } from '@/components/Skills/Skills'
+import { Experience } from '@/components/Experience/Experience'
 
 export default function Home() {
   return (
@@ -75,6 +76,89 @@ export default function Home() {
           { name: 'Colaboração', level: 95, category: 'Outros' },
           { name: 'Mentoria', level: 85, category: 'Outros' },
           { name: 'Trabalho em Equipe', level: 90, category: 'Outros' },
+        ]}
+      />
+      <Experience
+        title='Experiência Profissional'
+        subtitle='Minha jornada no desenvolvimento de software'
+        experiences={[
+          {
+            company: 'WeFit - Digital Service Design',
+            role: 'Engenheiro de Software Pleno',
+            period: '2024 - 2025',
+            description:
+              'Desenvolvimento para o novo portal do cliente da empresa Porto, utilizando React, Next.js e Storybook para o front-end e Node.js com NestJS para o back-end. Foco em performance, escalabilidade e experiência do usuário.',
+            technologies: [
+              'React',
+              'Next.js',
+              'TypeScript',
+              'Tailwind CSS',
+              'Storybook',
+              'Node.js',
+              'NestJS',
+              'Microsserviços',
+              'Docker',
+              'AWS',
+              'Terraform',
+              'Jest',
+              'Documentação',
+            ],
+            achievements: [
+              'Implementação de documentação técnica que reduziu onboarding em 30%',
+              'Aumento de cobertura de testes de 40% para 100%',
+            ],
+          },
+          {
+            company: 'LUZ - Soluções Financeiras',
+            role: 'Desenvolvedor Full Stack',
+            period: '2022 - 2023',
+            description:
+              'Desenvolvimento full stack de plataforma SaaS, trabalhando desde o MVP até escalar para milhares de usuários. Responsável por frontend, backend e DevOps.',
+            technologies: [
+              'React',
+              'Angular',
+              'MongoDB',
+              'MySQL',
+              'Redis',
+              'Docker',
+              'CI/CD',
+              'Python',
+              'Django',
+              'Flask',
+              'C#',
+              '.NET',
+              'RabbitMQ',
+              'Mensageria',
+            ],
+            achievements: [
+              'Otimização de imagem de Docker em 80%, reduzindo custos de infraestrutura e tempo de deploy',
+              'Otimização de queries SQL reduzindo tempo de resposta em 70%',
+              'Configuração de pipeline CI/CD com deploy automático',
+            ],
+          },
+          {
+            company: 'Freelancer',
+            role: 'Desenvolvedor Full Stack',
+            period: '2020 - 2022',
+            description:
+              'Desenvolvimento de aplicações web e mobile para diversos clientes, desde landing pages até sistemas complexos. Foco em entregar soluções de alta qualidade que atendam às necessidades dos clientes.',
+            technologies: [
+              'React',
+              'TypeScript',
+              'Node.js',
+              'Express',
+              'SQL',
+              'NoSQL',
+              'Firebase',
+              'React Native',
+              'Landing Pages',
+              'PWA',
+            ],
+            achievements: [
+              'Entrega de 10 projetos para clientes de diferentes segmentos',
+              'Lighthouse score para 95+ em todos os projetos',
+            ],
+          },
         ]}
       />
     </div>
