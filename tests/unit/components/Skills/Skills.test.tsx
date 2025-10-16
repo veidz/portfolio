@@ -22,4 +22,12 @@ describe('Skills', () => {
 
     expect(screen.getByText('Habilidades')).toBeInTheDocument()
   })
+
+  it('should render subtitle', () => {
+    render(<Skills {...defaultProps} />)
+
+    expect(
+      screen.getByText('Tecnologias e ferramentas que domino'),
+    ).toBeInTheDocument()
+  })
 })
