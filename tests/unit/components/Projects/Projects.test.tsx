@@ -68,4 +68,14 @@ describe('Projects', () => {
     expect(screen.getByText('🛒')).toBeInTheDocument()
     expect(screen.getByText('📋')).toBeInTheDocument()
   })
+
+  it('should render technologies', () => {
+    render(<Projects {...defaultProps} />)
+
+    expect(screen.getByText('React')).toBeInTheDocument()
+    expect(screen.getByText('Node.js')).toBeInTheDocument()
+    expect(screen.getByText('Stripe')).toBeInTheDocument()
+    expect(screen.getByText('Next.js')).toBeInTheDocument()
+    expect(screen.getByText('TypeScript')).toBeInTheDocument()
+  })
 })
