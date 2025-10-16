@@ -100,4 +100,11 @@ describe('Projects', () => {
     const githubButtons = screen.getAllByText('GitHub')
     expect(githubButtons).toHaveLength(1)
   })
+
+  it('should have section element with id', () => {
+    const { container } = render(<Projects {...defaultProps} />)
+
+    const section = container.querySelector('section#projects')
+    expect(section).toBeInTheDocument()
+  })
 })
