@@ -74,4 +74,11 @@ describe('Skills', () => {
     expect(section).toBeInTheDocument()
     expect(section).toHaveAttribute('id', 'skills')
   })
+
+  it('should have primary background', () => {
+    const { container } = render(<Skills {...defaultProps} />)
+
+    const section = container.querySelector('section')
+    expect(section).toHaveClass('bg-bg-primary')
+  })
 })
