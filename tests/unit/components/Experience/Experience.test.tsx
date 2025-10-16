@@ -44,4 +44,11 @@ describe('Experience', () => {
       screen.getByText('Minha jornada no desenvolvimento de software'),
     ).toBeInTheDocument()
   })
+
+  it('should render all company names', () => {
+    render(<Experience {...defaultProps} />)
+
+    expect(screen.getByText('Tech Company')).toBeInTheDocument()
+    expect(screen.getByText('Startup XYZ')).toBeInTheDocument()
+  })
 })
