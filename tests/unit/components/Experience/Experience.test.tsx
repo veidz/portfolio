@@ -51,4 +51,11 @@ describe('Experience', () => {
     expect(screen.getByText('Tech Company')).toBeInTheDocument()
     expect(screen.getByText('Startup XYZ')).toBeInTheDocument()
   })
+
+  it('should render all roles', () => {
+    render(<Experience {...defaultProps} />)
+
+    expect(screen.getByText('Senior Software Engineer')).toBeInTheDocument()
+    expect(screen.getByText('Full Stack Developer')).toBeInTheDocument()
+  })
 })
