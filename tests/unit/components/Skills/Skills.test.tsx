@@ -59,4 +59,11 @@ describe('Skills', () => {
     expect(screen.getByText('Backend')).toBeInTheDocument()
     expect(screen.getByText('DevOps')).toBeInTheDocument()
   })
+
+  it('should group skills by category', () => {
+    const { container } = render(<Skills {...defaultProps} />)
+
+    const categoryDivs = container.querySelectorAll('.space-y-12 > div')
+    expect(categoryDivs).toHaveLength(3)
+  })
 })
