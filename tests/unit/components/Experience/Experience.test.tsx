@@ -65,4 +65,17 @@ describe('Experience', () => {
     expect(screen.getByText('2022 - Presente')).toBeInTheDocument()
     expect(screen.getByText('2020 - 2022')).toBeInTheDocument()
   })
+
+  it('should render descriptions', () => {
+    render(<Experience {...defaultProps} />)
+
+    expect(
+      screen.getByText(
+        'Desenvolvimento de aplicações web modernas usando React e Node.js',
+      ),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByText('Desenvolvimento full stack com foco em performance'),
+    ).toBeInTheDocument()
+  })
 })
