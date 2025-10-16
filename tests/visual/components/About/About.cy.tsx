@@ -59,7 +59,7 @@ describe('About Visual Tests', () => {
   })
 
   it('should have correct background color', () => {
-    cy.get('section#about').should('have.class', 'bg-secondary')
+    cy.get('section#about').should('have.class', 'bg-bg-secondary')
   })
 
   it('should have brand color accents', () => {

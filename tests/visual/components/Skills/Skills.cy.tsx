@@ -24,7 +24,7 @@ describe('Skills Visual Tests', () => {
   })
 
   it('should display skill cards with names and levels', () => {
-    cy.get('#skills .bg-card').should('have.length.at.least', 1)
+    cy.get('#skills .bg-bg-card').should('have.length.at.least', 1)
     cy.get('#skills').contains('React').should('be.visible')
     cy.get('#skills').contains('%').should('be.visible')
   })
@@ -37,7 +37,7 @@ describe('Skills Visual Tests', () => {
   })
 
   it('should have correct title color', () => {
-    cy.get('#skills h2').should('have.class', 'text-primary')
+    cy.get('#skills h2').should('have.class', 'text-text-primary')
   })
 
   it('should have brand color on category titles', () => {
@@ -45,7 +45,7 @@ describe('Skills Visual Tests', () => {
   })
 
   it('should have hover effect on skill cards', () => {
-    cy.get('#skills .bg-card')
+    cy.get('#skills .bg-bg-card')
       .first()
       .should('have.class', 'hover:border-brand')
   })
@@ -59,7 +59,7 @@ describe('Skills Visual Tests', () => {
   it('should be responsive on tablet', () => {
     cy.viewport(768, 1024)
     cy.get('#skills').should('be.visible')
-    cy.get('#skills .bg-card').should('be.visible')
+    cy.get('#skills .bg-bg-card').should('be.visible')
   })
 
   it('should be responsive on desktop', () => {
@@ -69,7 +69,7 @@ describe('Skills Visual Tests', () => {
   })
 
   it('should have correct background color', () => {
-    cy.get('#skills').should('have.class', 'bg-primary')
+    cy.get('#skills').should('have.class', 'bg-bg-primary')
   })
 
   it('should scroll to section when navigating', () => {

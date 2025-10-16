@@ -82,7 +82,7 @@ describe('Header Visual Tests', () => {
     cy.viewport(1280, 720)
     cy.get('nav.hidden.md\\:flex').within(() => {
       cy.contains('LinkedIn')
-        .should('have.class', 'text-secondary')
+        .should('have.class', 'text-text-secondary')
         .should('have.class', 'hover:text-brand')
     })
   })

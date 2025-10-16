@@ -61,7 +61,7 @@ describe('Hero', () => {
     const { container } = render(<Hero {...defaultProps} />)
 
     const section = container.querySelector('section')
-    expect(section).toHaveClass('bg-primary')
+    expect(section).toHaveClass('bg-bg-primary')
   })
 
   it('should have correct text colors', () => {
@@ -73,9 +73,9 @@ describe('Hero', () => {
       '5 anos de experiência construindo soluções web modernas e escaláveis com React, Next.js, Node.js e muito mais.',
     )
 
-    expect(h1).toHaveClass('text-primary')
+    expect(h1).toHaveClass('text-text-primary')
     expect(title).toHaveClass('text-brand')
-    expect(description).toHaveClass('text-secondary')
+    expect(description).toHaveClass('text-text-secondary')
   })
 
   it('should render with custom content', () => {
