@@ -114,4 +114,27 @@ describe('Projects', () => {
     const section = container.querySelector('section')
     expect(section).toHaveClass('bg-bg-primary')
   })
+
+  it('should render with custom content', () => {
+    const customProps: ProjectsProps = {
+      title: 'Meus Projetos',
+      subtitle: 'Portfolio',
+      projects: [
+        {
+          title: 'Custom Project',
+          description: 'Test description',
+          image: '🎨',
+          technologies: ['Vue'],
+          highlights: [],
+        },
+      ],
+    }
+
+    render(<Projects {...customProps} />)
+
+    expect(screen.getByText('Meus Projetos')).toBeInTheDocument()
+    expect(screen.getByText('Portfolio')).toBeInTheDocument()
+    expect(screen.getByText('Custom Project')).toBeInTheDocument()
+    expect(screen.getByText('Vue')).toBeInTheDocument()
+  })
 })
