@@ -66,4 +66,12 @@ describe('Skills', () => {
     const categoryDivs = container.querySelectorAll('.space-y-12 > div')
     expect(categoryDivs).toHaveLength(3)
   })
+
+  it('should have section element', () => {
+    const { container } = render(<Skills {...defaultProps} />)
+
+    const section = container.querySelector('section')
+    expect(section).toBeInTheDocument()
+    expect(section).toHaveAttribute('id', 'skills')
+  })
 })
