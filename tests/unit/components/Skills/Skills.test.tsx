@@ -41,4 +41,14 @@ describe('Skills', () => {
     expect(screen.getByText('PostgreSQL')).toBeInTheDocument()
     expect(screen.getByText('Docker')).toBeInTheDocument()
   })
+
+  it('should render skill levels', () => {
+    render(<Skills {...defaultProps} />)
+
+    expect(screen.getByText('95%')).toBeInTheDocument()
+    expect(screen.getAllByText('90%').length).toBeGreaterThan(0)
+    expect(screen.getByText('85%')).toBeInTheDocument()
+    expect(screen.getByText('80%')).toBeInTheDocument()
+    expect(screen.getByText('75%')).toBeInTheDocument()
+  })
 })
