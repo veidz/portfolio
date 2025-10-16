@@ -33,4 +33,12 @@ describe('Projects', () => {
 
     expect(screen.getByText('Projetos')).toBeInTheDocument()
   })
+
+  it('should render subtitle', () => {
+    render(<Projects {...defaultProps} />)
+
+    expect(
+      screen.getByText('Alguns dos meus trabalhos recentes'),
+    ).toBeInTheDocument()
+  })
 })
