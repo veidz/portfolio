@@ -48,4 +48,17 @@ describe('Projects', () => {
     expect(screen.getByText('E-commerce Platform')).toBeInTheDocument()
     expect(screen.getByText('Task Manager')).toBeInTheDocument()
   })
+
+  it('should render all project descriptions', () => {
+    render(<Projects {...defaultProps} />)
+
+    expect(
+      screen.getByText(
+        'Plataforma de e-commerce completa com carrinho e pagamentos',
+      ),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByText('Gerenciador de tarefas com drag and drop'),
+    ).toBeInTheDocument()
+  })
 })
