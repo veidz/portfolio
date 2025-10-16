@@ -237,7 +237,7 @@ export default function Home() {
             icon: 'whatsapp' as const,
             label: 'WhatsApp',
             value: '+55 11 96605-1750',
-            link: 'https://wa.me/5511966051750?text=Olá!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.',
+            link: 'https://wa.me/5511966051750?text=Olá!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar.',
           },
           {
             icon: 'location' as const,
