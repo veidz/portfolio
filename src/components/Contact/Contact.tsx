@@ -1,0 +1,196 @@
+'use client'
+
+import { useState } from 'react'
+import { ContactProps } from './Contact.types'
+
+export const Contact = ({
+  title,
+  subtitle,
+  contactInfo,
+  socialLinks,
+}: ContactProps) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  })
+  const [formStatus, setFormStatus] = useState<
+    'idle' | 'sending' | 'success' | 'error'
+  >('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setFormStatus('sending')
+
+    await new Promise((resolve) => setTimeout(resolve, 1500))
+
+    setFormStatus('success')
+    setFormData({ name: '', email: '', message: '' })
+
+    setTimeout(() => setFormStatus('idle'), 3000)
+  }
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
+  return (
+    <section
+      id='contact'
+      className='min-h-screen flex items-center justify-center bg-bg-secondary py-20'
+    >
+      <div className='container mx-auto px-4'>
+        <div className='max-w-6xl mx-auto'>
+          <div className='text-center mb-16'>
+            <h2 className='text-4xl md:text-5xl font-bold text-text-primary mb-4'>
+              {title}
+            </h2>
+            <p className='text-lg md:text-xl text-text-secondary'>{subtitle}</p>
+          </div>
+
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-12'>
+            <div>
+              <h3 className='text-2xl font-bold text-text-primary mb-6'>
+                Informações de Contato
+              </h3>
+
+              <div className='space-y-6 mb-8'>
+                {contactInfo.map((info, index) => (
+                  <div key={index} className='flex items-start gap-4'>
+                    <div className='text-3xl flex-shrink-0'>{info.icon}</div>
+                    <div>
+                      <p className='text-sm text-text-secondary mb-1'>
+                        {info.label}
+                      </p>
+                      {info.link ? (
+                        <a
+                          href={info.link}
+                          className='text-text-primary hover:text-brand transition-colors'
+                        >
+                          {info.value}
+                        </a>
+                      ) : (
+                        <p className='text-text-primary'>{info.value}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div>
+                <h4 className='text-xl font-bold text-text-primary mb-4'>
+                  Redes Sociais
+                </h4>
+                <div className='flex gap-4'>
+                  {socialLinks.map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.url}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='w-12 h-12 flex items-center justify-center bg-bg-card border border-border-primary rounded-lg hover:border-brand hover:scale-110 transition-all duration-300 text-2xl'
+                      aria-label={social.label}
+                    >
+                      {social.icon}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className='text-2xl font-bold text-text-primary mb-6'>
+                Envie uma Mensagem
+              </h3>
+
+              <form onSubmit={handleSubmit} className='space-y-6'>
+                <div>
+                  <label
+                    htmlFor='name'
+                    className='block text-sm font-medium text-text-secondary mb-2'
+                  >
+                    Nome
+                  </label>
+                  <input
+                    type='text'
+                    id='name'
+                    name='name'
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    disabled={formStatus === 'sending'}
+                    className='w-full px-4 py-3 bg-bg-card border border-border-primary rounded-lg focus:outline-none focus:border-brand transition-colors text-text-primary disabled:opacity-50'
+                    placeholder='Seu nome'
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor='email'
+                    className='block text-sm font-medium text-text-secondary mb-2'
+                  >
+                    Email
+                  </label>
+                  <input
+                    type='email'
+                    id='email'
+                    name='email'
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    disabled={formStatus === 'sending'}
+                    className='w-full px-4 py-3 bg-bg-card border border-border-primary rounded-lg focus:outline-none focus:border-brand transition-colors text-text-primary disabled:opacity-50'
+                    placeholder='seu@email.com'
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor='message'
+                    className='block text-sm font-medium text-text-secondary mb-2'
+                  >
+                    Mensagem
+                  </label>
+                  <textarea
+                    id='message'
+                    name='message'
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    disabled={formStatus === 'sending'}
+                    rows={5}
+                    className='w-full px-4 py-3 bg-bg-card border border-border-primary rounded-lg focus:outline-none focus:border-brand transition-colors text-text-primary resize-none disabled:opacity-50'
+                    placeholder='Sua mensagem...'
+                  />
+                </div>
+
+                <button
+                  type='submit'
+                  disabled={formStatus === 'sending'}
+                  className='w-full px-6 py-3 bg-brand text-text-primary rounded-lg hover:opacity-90 transition-opacity font-medium disabled:opacity-50'
+                >
+                  {formStatus === 'sending'
+                    ? 'Enviando...'
+                    : formStatus === 'success'
+                      ? '✓ Enviado com sucesso!'
+                      : 'Enviar Mensagem'}
+                </button>
+
+                {formStatus === 'success' && (
+                  <p className='text-center text-sm text-brand'>
+                    Mensagem enviada com sucesso! Entrarei em contato em breve.
+                  </p>
+                )}
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

@@ -4,6 +4,7 @@ import { About } from '@/components/About/About'
 import { Skills } from '@/components/Skills/Skills'
 import { Projects } from '@/components/Projects/Projects'
 import { Experience } from '@/components/Experience/Experience'
+import { Contact } from '@/components/Contact/Contact'
 
 export default function Home() {
   return (
@@ -219,6 +220,41 @@ export default function Home() {
               'Notificações e comentários em tarefas',
               'Interface moderna com Shadcn UI',
             ],
+          },
+        ]}
+      />
+      <Contact
+        title='Entre em Contato'
+        subtitle='Vamos trabalhar juntos no seu próximo projeto'
+        contactInfo={[
+          {
+            icon: '📧',
+            label: 'Email',
+            value: 'joaovictorveidz@gmail.com',
+            link: 'mailto:joaovictorveidz@gmail.com',
+          },
+          {
+            icon: '💬',
+            label: 'WhatsApp',
+            value: '+55 11 96605-1750',
+            link: 'https://wa.me/5511966051750?text=Olá!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar.',
+          },
+          {
+            icon: '📍',
+            label: 'Localização',
+            value: 'São Paulo, Brasil',
+          },
+        ]}
+        socialLinks={[
+          {
+            icon: '🐙',
+            label: 'GitHub',
+            url: 'https://github.com/veidz',
+          },
+          {
+            icon: '💼',
+            label: 'LinkedIn',
+            url: 'https://linkedin.com/in/veidz',
           },
         ]}
       />
