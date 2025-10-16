@@ -2,6 +2,7 @@ import { Header } from '@/components/Header/Header'
 import { Hero } from '@/components/Hero/Hero'
 import { About } from '@/components/About/About'
 import { Skills } from '@/components/Skills/Skills'
+import { Projects } from '@/components/Projects/Projects'
 
 export default function Home() {
   return (
@@ -75,6 +76,66 @@ export default function Home() {
           { name: 'Colaboração', level: 95, category: 'Outros' },
           { name: 'Mentoria', level: 85, category: 'Outros' },
           { name: 'Trabalho em Equipe', level: 90, category: 'Outros' },
+        ]}
+      />
+      <Projects
+        title='Projetos'
+        subtitle='Alguns dos meus trabalhos recentes'
+        projects={[
+          {
+            title: 'Portfolio Pessoal',
+            description:
+              'Portfolio pessoal desenvolvido com Next.js e Tailwind CSS, apresentando meus projetos, habilidades e experiência profissional de forma elegante e responsiva.',
+            image: '🖥',
+            technologies: [
+              'React',
+              'Next.js',
+              'TypeScript',
+              'Node.js',
+              'Tailwind CSS',
+              'React Testing Library',
+              'Cypress',
+            ],
+            // TODO: Add Live URL from deployed website
+            liveUrl: 'https://github.com/veidz/portfolio',
+            githubUrl: 'https://github.com/veidz/portfolio',
+            highlights: [
+              'Desenvolvido com Next.js e Tailwind CSS',
+              'Design responsivo e moderno',
+              'Inclui seções de projetos, habilidades e contato',
+              'Testes unitários e end-to-end implementados',
+            ],
+          },
+          {
+            title: 'Collaborative Task Management',
+            description:
+              'Aplicativo de gerenciamento de tarefas, colaboração em tempo real, notificações e comentários',
+            image: '📋',
+            technologies: [
+              'TurboRepo',
+              'React',
+              'Tailwind',
+              'TypeScript',
+              'TanStack Query',
+              'TanStack Router',
+              'Shadcn UI',
+              'WebSockets',
+              'PostgreSQL',
+              'Node.js',
+              'NestJS',
+              'RabbitMQ',
+              'Api Gateway',
+              'Microserviços',
+              'Docker',
+            ],
+            githubUrl: 'https://github.com/veidz/collaborative-task-management',
+            highlights: [
+              'Colaboração em tempo real com WebSockets',
+              'Arquitetura de microserviços com API Gateway',
+              'Notificações e comentários em tarefas',
+              'Interface moderna com Shadcn UI',
+            ],
+          },
         ]}
       />
     </div>
