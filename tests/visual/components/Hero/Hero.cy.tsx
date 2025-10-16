@@ -12,9 +12,25 @@ describe('Hero Visual Tests', () => {
   })
 
   it('should display title with brand color', () => {
-    cy.contains('Engenheiro de Software & Desenvolvedor Full Stack')
+    cy.contains('Engenheiro de Software')
       .should('be.visible')
-      .should('have.class', 'text-[#A91D3A]')
+      .should('have.class', 'text-brand')
+  })
+
+  it('should apply Pacifico font to last name', () => {
+    cy.get('h1')
+      .find('span')
+      .eq(1)
+      .should('contain', 'Veidz')
+      .should('have.class', 'font-family-pacifico')
+  })
+
+  it('should apply brand color to Veidz', () => {
+    cy.get('h1')
+      .find('span')
+      .eq(1)
+      .should('contain', 'Veidz')
+      .should('have.class', 'text-brand')
   })
 
   it('should display description', () => {
@@ -26,25 +42,19 @@ describe('Hero Visual Tests', () => {
   it('should be responsive on mobile', () => {
     cy.viewport(375, 667)
     cy.contains('João Victor Veidz').should('be.visible')
-    cy.contains('Engenheiro de Software & Desenvolvedor Full Stack').should(
-      'be.visible',
-    )
+    cy.contains('Engenheiro de Software').should('be.visible')
   })
 
   it('should be responsive on tablet', () => {
     cy.viewport(768, 1024)
     cy.contains('João Victor Veidz').should('be.visible')
-    cy.contains('Engenheiro de Software & Desenvolvedor Full Stack').should(
-      'be.visible',
-    )
+    cy.contains('Engenheiro de Software').should('be.visible')
   })
 
   it('should be responsive on desktop', () => {
     cy.viewport(1920, 1080)
     cy.contains('João Victor Veidz').should('be.visible')
-    cy.contains('Engenheiro de Software & Desenvolvedor Full Stack').should(
-      'be.visible',
-    )
+    cy.contains('Engenheiro de Software').should('be.visible')
   })
 
   it('should have proper spacing from header', () => {
