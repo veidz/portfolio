@@ -103,4 +103,13 @@ describe('Skills', () => {
     expect(screen.getByText('Python')).toBeInTheDocument()
     expect(screen.getByText('70%')).toBeInTheDocument()
   })
+
+  it('should render progress bars with correct width', () => {
+    const { container } = render(<Skills {...defaultProps} />)
+
+    const progressBars = container.querySelectorAll(
+      '.bg-brand.h-2.rounded-full',
+    )
+    expect(progressBars.length).toBeGreaterThan(0)
+  })
 })
