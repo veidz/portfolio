@@ -93,4 +93,11 @@ describe('Projects', () => {
     const liveButtons = screen.getAllByText('Ver Projeto')
     expect(liveButtons).toHaveLength(1)
   })
+
+  it('should render github url button when provided', () => {
+    render(<Projects {...defaultProps} />)
+
+    const githubButtons = screen.getAllByText('GitHub')
+    expect(githubButtons).toHaveLength(1)
+  })
 })
