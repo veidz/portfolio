@@ -78,4 +78,12 @@ describe('Projects', () => {
     expect(screen.getByText('Next.js')).toBeInTheDocument()
     expect(screen.getByText('TypeScript')).toBeInTheDocument()
   })
+
+  it('should render highlights', () => {
+    render(<Projects {...defaultProps} />)
+
+    expect(screen.getByText('Processou R$ 1M em vendas')).toBeInTheDocument()
+    expect(screen.getByText('Mais de 10k usuários')).toBeInTheDocument()
+    expect(screen.getByText('Interface intuitiva')).toBeInTheDocument()
+  })
 })
