@@ -58,4 +58,11 @@ describe('Experience', () => {
     expect(screen.getByText('Senior Software Engineer')).toBeInTheDocument()
     expect(screen.getByText('Full Stack Developer')).toBeInTheDocument()
   })
+
+  it('should render all periods', () => {
+    render(<Experience {...defaultProps} />)
+
+    expect(screen.getByText('2022 - Presente')).toBeInTheDocument()
+    expect(screen.getByText('2020 - 2022')).toBeInTheDocument()
+  })
 })
