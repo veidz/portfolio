@@ -41,4 +41,11 @@ describe('Projects', () => {
       screen.getByText('Alguns dos meus trabalhos recentes'),
     ).toBeInTheDocument()
   })
+
+  it('should render all project titles', () => {
+    render(<Projects {...defaultProps} />)
+
+    expect(screen.getByText('E-commerce Platform')).toBeInTheDocument()
+    expect(screen.getByText('Task Manager')).toBeInTheDocument()
+  })
 })
