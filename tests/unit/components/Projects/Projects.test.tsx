@@ -107,4 +107,11 @@ describe('Projects', () => {
     const section = container.querySelector('section#projects')
     expect(section).toBeInTheDocument()
   })
+
+  it('should have correct background color', () => {
+    const { container } = render(<Projects {...defaultProps} />)
+
+    const section = container.querySelector('section')
+    expect(section).toHaveClass('bg-bg-primary')
+  })
 })
