@@ -61,4 +61,11 @@ describe('Projects', () => {
       screen.getByText('Gerenciador de tarefas com drag and drop'),
     ).toBeInTheDocument()
   })
+
+  it('should render project images', () => {
+    render(<Projects {...defaultProps} />)
+
+    expect(screen.getByText('🛒')).toBeInTheDocument()
+    expect(screen.getByText('📋')).toBeInTheDocument()
+  })
 })
