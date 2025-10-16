@@ -78,4 +78,65 @@ describe('Experience', () => {
       screen.getByText('Desenvolvimento full stack com foco em performance'),
     ).toBeInTheDocument()
   })
+
+  it('should render technologies', () => {
+    render(<Experience {...defaultProps} />)
+
+    expect(screen.getByText('React')).toBeInTheDocument()
+    expect(screen.getByText('Node.js')).toBeInTheDocument()
+    expect(screen.getByText('TypeScript')).toBeInTheDocument()
+    expect(screen.getByText('Next.js')).toBeInTheDocument()
+    expect(screen.getByText('PostgreSQL')).toBeInTheDocument()
+  })
+
+  it('should render achievements', () => {
+    render(<Experience {...defaultProps} />)
+
+    expect(
+      screen.getByText('Liderou equipe de 5 desenvolvedores'),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByText('Implementou arquitetura de microserviços'),
+    ).toBeInTheDocument()
+    expect(screen.getByText('Melhorou performance em 40%')).toBeInTheDocument()
+  })
+
+  it('should have section element with id', () => {
+    const { container } = render(<Experience {...defaultProps} />)
+
+    const section = container.querySelector('section#experience')
+    expect(section).toBeInTheDocument()
+  })
+
+  it('should have correct background color', () => {
+    const { container } = render(<Experience {...defaultProps} />)
+
+    const section = container.querySelector('section')
+    expect(section).toHaveClass('bg-bg-secondary')
+  })
+
+  it('should render with custom content', () => {
+    const customProps: ExperienceProps = {
+      title: 'Minha Experiência',
+      subtitle: 'Anos de trabalho',
+      experiences: [
+        {
+          company: 'Company ABC',
+          role: 'Developer',
+          period: '2021',
+          description: 'Descrição teste',
+          technologies: ['Python'],
+          achievements: ['Achievement 1'],
+        },
+      ],
+    }
+
+    render(<Experience {...customProps} />)
+
+    expect(screen.getByText('Minha Experiência')).toBeInTheDocument()
+    expect(screen.getByText('Anos de trabalho')).toBeInTheDocument()
+    expect(screen.getByText('Company ABC')).toBeInTheDocument()
+    expect(screen.getByText('Developer')).toBeInTheDocument()
+    expect(screen.getByText('Python')).toBeInTheDocument()
+  })
 })
