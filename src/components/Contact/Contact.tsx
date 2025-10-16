@@ -17,17 +17,46 @@ export const Contact = ({
   const [formStatus, setFormStatus] = useState<
     'idle' | 'sending' | 'success' | 'error'
   >('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setFormStatus('sending')
+    setErrorMessage('')
 
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-    setFormStatus('success')
-    setFormData({ name: '', email: '', message: '' })
+      const data = await response.json()
 
-    setTimeout(() => setFormStatus('idle'), 3000)
+      if (!response.ok) {
+        throw new Error(data.error || 'Erro ao enviar mensagem')
+      }
+
+      setFormStatus('success')
+      setFormData({ name: '', email: '', message: '' })
+
+      setTimeout(() => setFormStatus('idle'), 5000)
+    } catch (error) {
+      console.error('Erro ao enviar mensagem:', error)
+      setFormStatus('error')
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : 'Erro ao enviar mensagem. Tente novamente.',
+      )
+
+      setTimeout(() => {
+        setFormStatus('idle')
+        setErrorMessage('')
+      }, 5000)
+    }
   }
 
   const handleChange = (
@@ -184,6 +213,13 @@ export const Contact = ({
                 {formStatus === 'success' && (
                   <p className='text-center text-sm text-brand'>
                     Mensagem enviada com sucesso! Entrarei em contato em breve.
+                  </p>
+                )}
+
+                {formStatus === 'error' && (
+                  <p className='text-center text-sm text-red-500'>
+                    {errorMessage ||
+                      'Erro ao enviar mensagem. Tente novamente.'}
                   </p>
                 )}
               </form>

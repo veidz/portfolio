@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { Contact } from '@/components/Contact/Contact'
 import { ContactProps } from '@/components/Contact/Contact.types'
+import { vi } from 'vitest'
 
 const mockProps: ContactProps = {
   title: 'Entre em Contato',
@@ -31,6 +32,14 @@ const mockProps: ContactProps = {
 }
 
 describe('Contact', () => {
+  beforeEach(() => {
+    global.fetch = vi.fn()
+  })
+
+  afterEach(() => {
+    vi.resetAllMocks()
+  })
+
   it('should render title and subtitle', () => {
     render(<Contact {...mockProps} />)
 
@@ -123,6 +132,11 @@ describe('Contact', () => {
   })
 
   it('should show sending state when form is submitted', async () => {
+    ;(global.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ message: 'Email enviado com sucesso' }),
+    } as Response)
+
     render(<Contact {...mockProps} />)
 
     const nameInput = screen.getByLabelText('Nome')
@@ -143,6 +157,11 @@ describe('Contact', () => {
   })
 
   it('should show success message after form submission', async () => {
+    ;(global.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ message: 'Email enviado com sucesso' }),
+    } as Response)
+
     render(<Contact {...mockProps} />)
 
     const nameInput = screen.getByLabelText('Nome')
@@ -175,6 +194,11 @@ describe('Contact', () => {
   })
 
   it('should clear form fields after successful submission', async () => {
+    ;(global.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ message: 'Email enviado com sucesso' }),
+    } as Response)
+
     render(<Contact {...mockProps} />)
 
     const nameInput = screen.getByLabelText('Nome') as HTMLInputElement
