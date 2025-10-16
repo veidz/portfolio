@@ -36,4 +36,12 @@ describe('Experience', () => {
 
     expect(screen.getByText('Experiência Profissional')).toBeInTheDocument()
   })
+
+  it('should render subtitle', () => {
+    render(<Experience {...defaultProps} />)
+
+    expect(
+      screen.getByText('Minha jornada no desenvolvimento de software'),
+    ).toBeInTheDocument()
+  })
 })
