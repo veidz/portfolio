@@ -137,4 +137,14 @@ describe('Projects', () => {
     expect(screen.getByText('Custom Project')).toBeInTheDocument()
     expect(screen.getByText('Vue')).toBeInTheDocument()
   })
+
+  it('should have hover effect on project cards', () => {
+    const { container } = render(<Projects {...defaultProps} />)
+
+    const cards = container.querySelectorAll('.bg-bg-card')
+    expect(cards.length).toBeGreaterThan(0)
+    cards.forEach((card) => {
+      expect(card).toHaveClass('hover:border-brand')
+    })
+  })
 })
