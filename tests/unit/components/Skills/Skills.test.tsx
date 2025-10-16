@@ -79,14 +79,14 @@ describe('Skills', () => {
     const { container } = render(<Skills {...defaultProps} />)
 
     const section = container.querySelector('section')
-    expect(section).toHaveClass('bg-bg-primary')
+    expect(section).toHaveClass('bg-primary')
   })
 
   it('should have correct text colors', () => {
     const { container } = render(<Skills {...defaultProps} />)
 
     const title = container.querySelector('h2')
-    expect(title).toHaveClass('text-text-primary')
+    expect(title).toHaveClass('text-primary')
   })
 
   it('should render with custom content', () => {
@@ -116,7 +116,7 @@ describe('Skills', () => {
   it('should have hover effect on skill cards', () => {
     const { container } = render(<Skills {...defaultProps} />)
 
-    const skillCards = container.querySelectorAll('.bg-bg-card')
+    const skillCards = container.querySelectorAll('.bg-card')
     expect(skillCards.length).toBeGreaterThan(0)
     skillCards.forEach((card) => {
       expect(card).toHaveClass('hover:border-brand')

@@ -5,7 +5,7 @@ import { Skills } from '@/components/Skills/Skills'
 
 export default function Home() {
   return (
-    <div className='min-h-screen bg-bg-primary'>
+    <div className='min-h-screen bg-primary'>
       <Header />
       <Hero
         name='João Victor Veidz'

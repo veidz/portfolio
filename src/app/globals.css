@@ -5,10 +5,10 @@
   --color-brand: #a91d3a;
 
   /* Background Colors */
-  --color-bg-primary: #0a0a0a;
-  --color-bg-secondary: #0f172a;
-  --color-bg-card: #1e293b;
-  --color-bg-header: rgba(2, 6, 23, 0.8);
+  --color-primary: #0a0a0a;
+  --color-secondary: #0f172a;
+  --color-card: #1e293b;
+  --color-header: rgba(2, 6, 23, 0.8);
 
   /* Text Colors */
   --color-text-primary: #ffffff;
@@ -16,7 +16,7 @@
   --color-text-muted: #9ca3af;
 
   /* Border Colors */
-  --color-border-primary: #1e293b;
+  --color-border: #1e293b;
 
   /* Fonts */
   --font-sans: var(--font-poppins);

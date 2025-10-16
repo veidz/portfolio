@@ -71,7 +71,7 @@ describe('About', () => {
     const { container } = render(<About {...defaultProps} />)
 
     const section = container.querySelector('section')
-    expect(section).toHaveClass('bg-bg-secondary')
+    expect(section).toHaveClass('bg-secondary')
   })
 
   it('should have heading hierarchy', () => {
