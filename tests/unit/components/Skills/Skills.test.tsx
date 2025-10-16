@@ -51,4 +51,12 @@ describe('Skills', () => {
     expect(screen.getByText('80%')).toBeInTheDocument()
     expect(screen.getByText('75%')).toBeInTheDocument()
   })
+
+  it('should render all categories', () => {
+    render(<Skills {...defaultProps} />)
+
+    expect(screen.getByText('Frontend')).toBeInTheDocument()
+    expect(screen.getByText('Backend')).toBeInTheDocument()
+    expect(screen.getByText('DevOps')).toBeInTheDocument()
+  })
 })
