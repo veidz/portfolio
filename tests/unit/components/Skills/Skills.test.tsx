@@ -88,4 +88,19 @@ describe('Skills', () => {
     const title = container.querySelector('h2')
     expect(title).toHaveClass('text-text-primary')
   })
+
+  it('should render with custom content', () => {
+    const customProps: SkillsProps = {
+      title: 'Minhas Skills',
+      subtitle: 'O que eu sei fazer',
+      skills: [{ name: 'Python', level: 70, category: 'Backend' }],
+    }
+
+    render(<Skills {...customProps} />)
+
+    expect(screen.getByText('Minhas Skills')).toBeInTheDocument()
+    expect(screen.getByText('O que eu sei fazer')).toBeInTheDocument()
+    expect(screen.getByText('Python')).toBeInTheDocument()
+    expect(screen.getByText('70%')).toBeInTheDocument()
+  })
 })
