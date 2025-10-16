@@ -30,4 +30,15 @@ describe('Skills', () => {
       screen.getByText('Tecnologias e ferramentas que domino'),
     ).toBeInTheDocument()
   })
+
+  it('should render all skill names', () => {
+    render(<Skills {...defaultProps} />)
+
+    expect(screen.getByText('React')).toBeInTheDocument()
+    expect(screen.getByText('TypeScript')).toBeInTheDocument()
+    expect(screen.getByText('Next.js')).toBeInTheDocument()
+    expect(screen.getByText('Node.js')).toBeInTheDocument()
+    expect(screen.getByText('PostgreSQL')).toBeInTheDocument()
+    expect(screen.getByText('Docker')).toBeInTheDocument()
+  })
 })
