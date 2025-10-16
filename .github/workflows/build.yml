@@ -29,6 +29,8 @@ jobs:
 
       - name: Build application
         run: npm run build
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY || 're_dummy_key_for_ci_testing' }}
 
       - name: Check build output
         run: |
