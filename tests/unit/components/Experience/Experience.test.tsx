@@ -139,4 +139,14 @@ describe('Experience', () => {
     expect(screen.getByText('Developer')).toBeInTheDocument()
     expect(screen.getByText('Python')).toBeInTheDocument()
   })
+
+  it('should have hover effect on experience cards', () => {
+    const { container } = render(<Experience {...defaultProps} />)
+
+    const cards = container.querySelectorAll('.bg-bg-card')
+    expect(cards.length).toBeGreaterThan(0)
+    cards.forEach((card) => {
+      expect(card).toHaveClass('hover:border-brand')
+    })
+  })
 })
