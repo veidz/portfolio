@@ -72,7 +72,7 @@ describe('Header', () => {
     const whatsappLinks = screen.getAllByText('WhatsApp')
     expect(whatsappLinks[0]).toHaveAttribute(
       'href',
-      'https://wa.me/5511966051750',
+      'https://wa.me/5511966051750?text=Olá!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar.',
     )
     expect(whatsappLinks[0]).toHaveAttribute('target', '_blank')
   })
