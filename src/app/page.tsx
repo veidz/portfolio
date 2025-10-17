@@ -5,6 +5,7 @@ import { Skills } from '@/components/Skills/Skills'
 import { Projects } from '@/components/Projects/Projects'
 import { Experience } from '@/components/Experience/Experience'
 import { Contact } from '@/components/Contact/Contact'
+import { Footer } from '@/components/Footer/Footer'
 
 export default function Home() {
   return (
@@ -258,6 +259,7 @@ export default function Home() {
           },
         ]}
       />
+      <Footer name='João Victor Veidz' />
     </div>
   )
 }
