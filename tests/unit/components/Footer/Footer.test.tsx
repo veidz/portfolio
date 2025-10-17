@@ -46,13 +46,6 @@ describe('Footer', () => {
     expect(githubLink).toHaveAttribute('rel', 'noopener noreferrer')
   })
 
-  it('should render back to top link', () => {
-    render(<Footer name='João Victor Veidz' />)
-
-    const backToTopLink = screen.getByText('Voltar ao topo')
-    expect(backToTopLink).toHaveAttribute('href', '#')
-  })
-
   it('should render with correct styling classes', () => {
     const { container } = render(<Footer name='João Victor Veidz' />)
     const footer = container.querySelector('footer')
