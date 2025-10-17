@@ -6,7 +6,11 @@ import { NavLink } from './Header.types'
 const navLinks: NavLink[] = [
   { label: 'LinkedIn', href: 'https://linkedin.com/in/veidz', external: true },
   { label: 'GitHub', href: 'https://github.com/veidz', external: true },
-  { label: 'WhatsApp', href: 'https://wa.me/5511966051750', external: true },
+  {
+    label: 'WhatsApp',
+    href: 'https://wa.me/5511966051750?text=Olá!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar.',
+    external: true,
+  },
   { label: 'Email', href: 'mailto:joaovictorveidz@gmail.com', external: false },
 ]
 
