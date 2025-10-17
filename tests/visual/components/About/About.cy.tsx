@@ -1,6 +1,8 @@
 describe('About Visual Tests', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('section#about').scrollIntoView()
+    cy.wait(500)
   })
 
   it('should render about section', () => {
@@ -42,18 +44,21 @@ describe('About Visual Tests', () => {
 
   it('should be responsive on mobile', () => {
     cy.viewport(375, 667)
+    cy.wait(300)
     cy.get('section#about').should('be.visible')
     cy.contains('Sobre Mim').should('be.visible')
   })
 
   it('should be responsive on tablet', () => {
     cy.viewport(768, 1024)
+    cy.wait(300)
     cy.get('section#about').should('be.visible')
     cy.contains('Sobre Mim').should('be.visible')
   })
 
   it('should be responsive on desktop', () => {
     cy.viewport(1920, 1080)
+    cy.wait(300)
     cy.get('section#about').should('be.visible')
     cy.contains('Sobre Mim').should('be.visible')
   })

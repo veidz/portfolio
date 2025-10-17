@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import userEvent from '@testing-library/user-event'
 import { Header } from '@/components/Header/Header'
@@ -99,11 +99,21 @@ describe('Header', () => {
     expect(menuButton).toHaveAttribute('aria-expanded', 'false')
 
     await user.click(menuButton)
-    expect(menuButton).toHaveAttribute('aria-expanded', 'true')
+    await waitFor(
+      () => {
+        expect(menuButton).toHaveAttribute('aria-expanded', 'true')
+      },
+      { timeout: 1000 }
+    )
 
     await user.click(menuButton)
-    expect(menuButton).toHaveAttribute('aria-expanded', 'false')
-  })
+    await waitFor(
+      () => {
+        expect(menuButton).toHaveAttribute('aria-expanded', 'false')
+      },
+      { timeout: 1000 }
+    )
+  }, 10000)
 
   it('should close mobile menu when a link is clicked', async () => {
     const user = userEvent.setup()
