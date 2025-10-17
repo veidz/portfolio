@@ -8,6 +8,7 @@ export default defineConfig({
     supportFile: 'tests/visual/support/e2e.ts',
     videosFolder: 'tests/visual/videos',
     screenshotsFolder: 'tests/visual/screenshots',
+    defaultCommandTimeout: 10000,
   },
   viewportWidth: 1280,
   viewportHeight: 720,

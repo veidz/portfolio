@@ -1,0 +1,24 @@
+{
+  "name": "João Victor Veidz - Portfolio",
+  "short_name": "Veidz",
+  "description": "Portfolio de João Victor Veidz - Engenheiro de Software",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#151515",
+  "theme_color": "#A91D3A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
