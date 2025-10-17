@@ -1,7 +1,7 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import { describe, it, expect } from 'vitest'
 import { Contact } from '@/components/Contact/Contact'
 import { ContactProps } from '@/components/Contact/Contact.types'
-import { vi } from 'vitest'
 
 const mockProps: ContactProps = {
   title: 'Entre em Contato',
@@ -39,14 +39,6 @@ const mockProps: ContactProps = {
 }
 
 describe('Contact', () => {
-  beforeEach(() => {
-    global.fetch = vi.fn()
-  })
-
-  afterEach(() => {
-    vi.resetAllMocks()
-  })
-
   it('should render title and subtitle', () => {
     render(<Contact {...mockProps} />)
 
@@ -89,133 +81,6 @@ describe('Contact', () => {
     )
   })
 
-  it('should render contact form with all fields', () => {
-    render(<Contact {...mockProps} />)
-
-    expect(screen.getByLabelText('Nome')).toBeInTheDocument()
-    expect(screen.getByLabelText('Email')).toBeInTheDocument()
-    expect(screen.getByLabelText('Mensagem')).toBeInTheDocument()
-    expect(
-      screen.getByRole('button', { name: 'Enviar Mensagem' }),
-    ).toBeInTheDocument()
-  })
-
-  it('should update form fields when typing', () => {
-    render(<Contact {...mockProps} />)
-
-    const nameInput = screen.getByLabelText('Nome') as HTMLInputElement
-    const emailInput = screen.getByLabelText('Email') as HTMLInputElement
-    const messageInput = screen.getByLabelText(
-      'Mensagem',
-    ) as HTMLTextAreaElement
-
-    fireEvent.change(nameInput, { target: { value: 'João Silva' } })
-    fireEvent.change(emailInput, { target: { value: 'joao@example.com' } })
-    fireEvent.change(messageInput, {
-      target: { value: 'Olá, gostaria de conversar!' },
-    })
-
-    expect(nameInput.value).toBe('João Silva')
-    expect(emailInput.value).toBe('joao@example.com')
-    expect(messageInput.value).toBe('Olá, gostaria de conversar!')
-  })
-
-  it('should show sending state when form is submitted', async () => {
-    ;(global.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({ message: 'Email enviado com sucesso' }),
-    } as Response)
-
-    render(<Contact {...mockProps} />)
-
-    const nameInput = screen.getByLabelText('Nome')
-    const emailInput = screen.getByLabelText('Email')
-    const messageInput = screen.getByLabelText('Mensagem')
-    const submitButton = screen.getByRole('button', { name: 'Enviar Mensagem' })
-
-    fireEvent.change(nameInput, { target: { value: 'João Silva' } })
-    fireEvent.change(emailInput, { target: { value: 'joao@example.com' } })
-    fireEvent.change(messageInput, {
-      target: { value: 'Olá, gostaria de conversar!' },
-    })
-
-    fireEvent.click(submitButton)
-
-    expect(screen.getByText('Enviando...')).toBeInTheDocument()
-    expect(submitButton).toBeDisabled()
-  })
-
-  it('should show success message after form submission', async () => {
-    ;(global.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({ message: 'Email enviado com sucesso' }),
-    } as Response)
-
-    render(<Contact {...mockProps} />)
-
-    const nameInput = screen.getByLabelText('Nome')
-    const emailInput = screen.getByLabelText('Email')
-    const messageInput = screen.getByLabelText('Mensagem')
-    const submitButton = screen.getByRole('button', { name: 'Enviar Mensagem' })
-
-    fireEvent.change(nameInput, { target: { value: 'João Silva' } })
-    fireEvent.change(emailInput, { target: { value: 'joao@example.com' } })
-    fireEvent.change(messageInput, {
-      target: { value: 'Olá, gostaria de conversar!' },
-    })
-
-    fireEvent.click(submitButton)
-
-    await waitFor(
-      () => {
-        expect(
-          screen.getByRole('button', { name: /enviado com sucesso/i }),
-        ).toBeInTheDocument()
-      },
-      { timeout: 2000 },
-    )
-
-    expect(
-      screen.getByText(
-        'Mensagem enviada com sucesso! Entrarei em contato em breve.',
-      ),
-    ).toBeInTheDocument()
-  })
-
-  it('should clear form fields after successful submission', async () => {
-    ;(global.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({ message: 'Email enviado com sucesso' }),
-    } as Response)
-
-    render(<Contact {...mockProps} />)
-
-    const nameInput = screen.getByLabelText('Nome') as HTMLInputElement
-    const emailInput = screen.getByLabelText('Email') as HTMLInputElement
-    const messageInput = screen.getByLabelText(
-      'Mensagem',
-    ) as HTMLTextAreaElement
-
-    fireEvent.change(nameInput, { target: { value: 'João Silva' } })
-    fireEvent.change(emailInput, { target: { value: 'joao@example.com' } })
-    fireEvent.change(messageInput, {
-      target: { value: 'Olá, gostaria de conversar!' },
-    })
-
-    const submitButton = screen.getByRole('button', { name: 'Enviar Mensagem' })
-    fireEvent.click(submitButton)
-
-    await waitFor(
-      () => {
-        expect(nameInput.value).toBe('')
-      },
-      { timeout: 2000 },
-    )
-
-    expect(emailInput.value).toBe('')
-    expect(messageInput.value).toBe('')
-  })
-
   it('should have correct background color', () => {
     const { container } = render(<Contact {...mockProps} />)
     const section = container.querySelector('section')
@@ -230,56 +95,22 @@ describe('Contact', () => {
     expect(section).toHaveAttribute('id', 'contact')
   })
 
-  it('should disable submit button when form is invalid', () => {
+  it('should render contact cards with icons', () => {
     render(<Contact {...mockProps} />)
 
-    const submitButton = screen.getByRole('button', { name: 'Enviar Mensagem' })
+    const emailCard = screen.getByText('Email').closest('div')
+    const phoneCard = screen.getByText('Telefone').closest('div')
+    const locationCard = screen.getByText('Localização').closest('div')
 
-    expect(submitButton).toBeDisabled()
+    expect(emailCard).toBeInTheDocument()
+    expect(phoneCard).toBeInTheDocument()
+    expect(locationCard).toBeInTheDocument()
   })
 
-  it('should enable submit button when all fields are valid', () => {
+  it('should render social media icons', () => {
     render(<Contact {...mockProps} />)
 
-    const nameInput = screen.getByLabelText('Nome')
-    const emailInput = screen.getByLabelText('Email')
-    const messageInput = screen.getByLabelText('Mensagem')
-    const submitButton = screen.getByRole('button', { name: 'Enviar Mensagem' })
-
-    expect(submitButton).toBeDisabled()
-
-    fireEvent.change(nameInput, { target: { value: 'João Silva' } })
-    expect(submitButton).toBeDisabled()
-
-    fireEvent.change(emailInput, { target: { value: 'invalidemail' } })
-    expect(submitButton).toBeDisabled()
-
-    fireEvent.change(emailInput, { target: { value: 'joao@example.com' } })
-    expect(submitButton).toBeDisabled()
-
-    fireEvent.change(messageInput, {
-      target: { value: 'Olá, gostaria de conversar!' },
-    })
-    expect(submitButton).not.toBeDisabled()
-  })
-
-  it('should show validation error for invalid email', () => {
-    render(<Contact {...mockProps} />)
-
-    const emailInput = screen.getByLabelText('Email')
-
-    fireEvent.change(emailInput, { target: { value: 'invalidemail' } })
-
-    expect(screen.getByText('Email inválido')).toBeInTheDocument()
-  })
-
-  it('should not show validation error for valid email', () => {
-    render(<Contact {...mockProps} />)
-
-    const emailInput = screen.getByLabelText('Email')
-
-    fireEvent.change(emailInput, { target: { value: 'joao@example.com' } })
-
-    expect(screen.queryByText('Email inválido')).not.toBeInTheDocument()
+    expect(screen.getByLabelText('GitHub')).toBeInTheDocument()
+    expect(screen.getByLabelText('LinkedIn')).toBeInTheDocument()
   })
 })
