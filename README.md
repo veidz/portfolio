@@ -1,4 +1,3 @@
-![CI](https://github.com/veidz/portfolio/workflows/CI/badge.svg)
 ![Lint](https://github.com/veidz/portfolio/workflows/Lint/badge.svg)
 ![Tests](https://github.com/veidz/portfolio/workflows/Unit%20Tests/badge.svg)
 ![Build](https://github.com/veidz/portfolio/workflows/Build/badge.svg)
