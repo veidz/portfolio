@@ -66,15 +66,24 @@ describe('Header Visual Tests', () => {
   it('should have correct styles and positioning', () => {
     cy.get('header').should('have.class', 'fixed')
     cy.get('header').should('have.class', 'z-50')
-    cy.contains('Veidz').should('have.class', 'text-[#A91D3A]')
+    cy.contains('Veidz').should('have.class', 'text-brand')
+  })
+
+  it('should render logo with Pacifico font', () => {
+    cy.contains('Veidz').should('have.class', 'font-family-pacifico')
+  })
+
+  it('should render logo with correct text size', () => {
+    cy.contains('Veidz').should('have.class', 'text-3xl')
+    cy.contains('Veidz').should('have.class', 'font-bold')
   })
 
   it('should have hover effects on navigation links', () => {
     cy.viewport(1280, 720)
     cy.get('nav.hidden.md\\:flex').within(() => {
       cy.contains('LinkedIn')
-        .should('have.class', 'text-gray-300')
-        .should('have.class', 'hover:text-[#A91D3A]')
+        .should('have.class', 'text-text-secondary')
+        .should('have.class', 'hover:text-brand')
     })
   })
 
