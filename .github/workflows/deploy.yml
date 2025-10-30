@@ -25,7 +25,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: npm
 
       - name: Setup Pages
@@ -36,6 +36,8 @@ jobs:
 
       - name: Build with Next.js
         run: npm run build
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY || 're_dummy_key_for_ci_testing' }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

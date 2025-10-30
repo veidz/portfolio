@@ -15,12 +15,12 @@ jobs:
     name: Unit Tests
     uses: ./.github/workflows/test.yml
 
-  build:
-    name: Build
-    uses: ./.github/workflows/build.yml
-    needs: [lint, test]
-
   e2e:
     name: E2E Tests
     uses: ./.github/workflows/e2e.yml
-    needs: [build]
+    needs: [lint, test]
+
+  build:
+    name: Build
+    uses: ./.github/workflows/build.yml
+    needs: [lint, test, e2e]
