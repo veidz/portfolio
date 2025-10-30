@@ -1,19 +1,17 @@
 import '@testing-library/jest-dom/vitest'
 import { vi } from 'vitest'
 
-// Mock IntersectionObserver para testes com Framer Motion
 class IntersectionObserverMock {
   root: Element | null = null
   rootMargin: string = ''
   thresholds: ReadonlyArray<number> = []
-  
+
   constructor(
     public callback: IntersectionObserverCallback,
-    public options?: IntersectionObserverInit
+    public options?: IntersectionObserverInit,
   ) {}
 
   observe() {
-    // Simula que o elemento está visível
     this.callback(
       [
         {
@@ -26,7 +24,7 @@ class IntersectionObserverMock {
           time: Date.now(),
         },
       ],
-      this as unknown as IntersectionObserver
+      this as unknown as IntersectionObserver,
     )
   }
 
@@ -37,12 +35,12 @@ class IntersectionObserverMock {
   }
 }
 
-global.IntersectionObserver = IntersectionObserverMock as unknown as typeof IntersectionObserver
+global.IntersectionObserver =
+  IntersectionObserverMock as unknown as typeof IntersectionObserver
 
-// Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
-  value: vi.fn().mockImplementation(query => ({
+  value: vi.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,

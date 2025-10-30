@@ -103,7 +103,7 @@ describe('Header', () => {
       () => {
         expect(menuButton).toHaveAttribute('aria-expanded', 'true')
       },
-      { timeout: 1000 }
+      { timeout: 1000 },
     )
 
     await user.click(menuButton)
@@ -111,7 +111,7 @@ describe('Header', () => {
       () => {
         expect(menuButton).toHaveAttribute('aria-expanded', 'false')
       },
-      { timeout: 1000 }
+      { timeout: 1000 },
     )
   }, 10000)
 
